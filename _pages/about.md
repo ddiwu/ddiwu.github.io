@@ -6,11 +6,11 @@ subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
-  image: prof_pic.jpeg
+  image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-#    <p>555 your office number</p>
-#    <p>123 your address street</p>
+    <p>555 your office number</p>
+    <p>123 your address street</p>
     <p>He Fei, China</p>
 
 news: true # includes a list of news items
