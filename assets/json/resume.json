@@ -62,7 +62,7 @@
   "skills": [
     {
       "name": "CS",
-      "level": "BS",
+      "level": "B.S.",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
         "Verilog/System Verilog, Python, C/C++, Latex, Matlab",
