@@ -1,12 +1,11 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Di Wu",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "wd3271391891@mail.ustc.edu.cn",
+    "phone": "(+86) 19359106198",
+    "url": "https://ddiwu.com",
+    "summary": "An undergraduate student, interested in computer architecture and systems",
     "location": {
       "address": "2712 Broadway St",
       "postalCode": "CA 94115",
@@ -33,28 +32,24 @@
       "highlights": ["Relativity"]
     }
   ],
-  "volunteer": [
-    {
-      "organization": "People's Climate March",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
-    }
-  ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "institution": "National University of Singapore, NUS",
+      "location": "Singapore",
+      "url": "https://nus.edu.sg/",
+      "area": "Computer Science",
+      "studyType": "Summer Internship",
+      "startDate": "2024-07",
+      "endDate": "2025-01"
+    },
+    {
+      "institution": "University of Science and Technology in China, USTC",
+      "location": "He Fei, China",
+      "url": "https://www.ustc.edu.cn/",
+      "area": "Physics and Computer Science",
+      "studyType": "BS",
+      "startDate": "2021-09-01",
+      "endDate": "Present"
     }
   ],
   "awards": [
