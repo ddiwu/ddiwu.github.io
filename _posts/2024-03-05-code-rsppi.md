@@ -1,6 +1,6 @@
 ---
 layout: post
-title: a post with automatic report about ip
+title: a post with automatic report ip
 date: 2024-03-05 15:09:00
 description: automatically report the ip in ubuntu rsp-pi
 tags: formatting code
