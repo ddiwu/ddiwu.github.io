@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with code
-date: 2023-07-15 15:09:00
-description: an example of a blog post with some code
+title: a post with automatic report about ip
+date: 2024-03-05 15:09:00
+description: automatically report the ip in ubuntu rsp-pi
 tags: formatting code
 categories: sample-posts
 featured: true
