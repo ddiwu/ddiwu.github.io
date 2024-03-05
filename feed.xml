@@ -1,4 +1,206 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wd1234567890.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://wd1234567890.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-03-05T08:39:57+00:00</updated><id>https://wd1234567890.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">a post with code diff</title><link href="https://wd1234567890.github.io/blog/2024/code-diff/" rel="alternate" type="text/html" title="a post with code diff"/><published>2024-01-27T19:22:00+00:00</published><updated>2024-01-27T19:22:00+00:00</updated><id>https://wd1234567890.github.io/blog/2024/code-diff</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2024/code-diff/"><![CDATA[<p>You can display diff code by using the regular markdown syntax:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">diff
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wd1234567890.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://wd1234567890.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-03-05T08:52:20+00:00</updated><id>https://wd1234567890.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">Automatically report ip</title><link href="https://wd1234567890.github.io/blog/2024/code/" rel="alternate" type="text/html" title="Automatically report ip"/><published>2024-03-05T00:00:00+00:00</published><updated>2024-03-05T00:00:00+00:00</updated><id>https://wd1234567890.github.io/blog/2024/code</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2024/code/"><![CDATA[<h1 id="code">Code</h1> <p>First, you should write some code including .py, .json and .sh. You should put two py and json files in the same dir.</p> <h2 id="easyjsonpy">easyjson.py</h2> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+#-*-coding: utf-8-*-
+</span><span class="kn">import</span> <span class="n">json</span>
+<span class="kn">import</span> <span class="n">time</span>
+
+<span class="k">class</span> <span class="nc">easyJson</span><span class="p">():</span>
+    <span class="sh">"""</span><span class="s">Class that loads hyperparameters from a json file.
+        Example:
+        ```
+        params = easyjson(json_path)
+        print(params.learning_rate)
+        params.learning_rate = 0.5  # change the value of learning_rate in params
+        ```
+        </span><span class="sh">"""</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">json_path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="n">json_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> 
+            <span class="n">self</span><span class="p">.</span><span class="n">__dict__</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">json_path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="n">json_path</span><span class="p">,</span> <span class="sh">'</span><span class="s">w</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">__dict__</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">json_path</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Loads parameters from json file</span><span class="sh">"""</span>
+        <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="n">json_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">__dict__</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@property</span> 
+    <span class="k">def</span> <span class="nf">dict</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Gives dict-like access to Params instance by `params.dict[</span><span class="sh">'</span><span class="s">learning_rate</span><span class="sh">'</span><span class="s">]</span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">__dict__</span>
+<span class="k">class</span> <span class="nc">DictObj</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="nb">map</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="nb">map</span> <span class="o">=</span> <span class="nb">map</span>
+
+    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="sh">'</span><span class="s">map</span><span class="sh">'</span><span class="p">:</span>
+             <span class="nb">object</span><span class="p">.</span><span class="nf">__setattr__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+             <span class="k">return</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">set attr called </span><span class="sh">'</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="nb">map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nb">map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,(</span><span class="nb">dict</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="nc">DictObj</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">)):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                <span class="n">r</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nc">DictObj</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">r</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nb">map</span><span class="p">[</span><span class="n">name</span><span class="p">];</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nb">map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">SEED</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">dataset</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Omniglot</span><span class="sh">"</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">meta_lr</span><span class="sh">"</span><span class="p">:</span> <span class="mf">1e-3</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_episodes</span><span class="sh">"</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_classes</span><span class="sh">"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_samples</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_query</span><span class="sh">"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_steps</span><span class="sh">"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_inner_tasks</span><span class="sh">"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_train_updates</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_eval_updates</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">save_summary_steps</span><span class="sh">"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                  <span class="sh">"</span><span class="s">num_workers</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1</span>
+                  <span class="p">}</span>
+    <span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">'</span><span class="s">params.json</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">w</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>  
+        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="nf">easyJson</span><span class="p">(</span><span class="sh">'</span><span class="s">params.json</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">.</span><span class="n">SEED</span> <span class="o">=</span> <span class="mi">2</span>   
+    <span class="n">params</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="sh">'</span><span class="s">params.json</span><span class="sh">'</span><span class="p">)</span>  
+</code></pre></div></div> <h2 id="getwlanippy">getwlanip.py</h2> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+</span><span class="kn">import</span> <span class="n">socket</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="n">smtplib</span>
+<span class="kn">import</span> <span class="n">urllib.request</span>
+<span class="kn">import</span> <span class="n">importlib</span>
+<span class="kn">from</span> <span class="n">easyjson</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="n">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
+<span class="kn">from</span> <span class="n">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+<span class="kn">from</span> <span class="n">email.mime.image</span> <span class="kn">import</span> <span class="n">MIMEImage</span>
+<span class="kn">from</span> <span class="n">email.utils</span> <span class="kn">import</span> <span class="n">formataddr</span>
+<span class="kn">import</span> <span class="n">sys</span>
+<span class="c1">#import requests
+#reload(sys)
+</span><span class="n">importlib</span><span class="p">.</span><span class="nf">reload</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="c1">#sys.setdefaultencoding('utf-8')
+</span><span class="k">def</span> <span class="nf">check_network</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="c1">#        result=urllib.request.urlopen('http://baidu.com').read()
+#        print(result)
+</span>        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">=</span><span class="n">urllib</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="nf">urlopen</span><span class="p">(</span><span class="sh">'</span><span class="s">https://www.baidu.com</span><span class="sh">'</span><span class="p">).</span><span class="nf">read</span><span class="p">()</span>
+<span class="c1">#            print(result)
+</span>            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Network is Ready!</span><span class="sh">"</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Network is not ready,Sleep 5s...</span><span class="sh">"</span><span class="p">)</span>
+            <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">True</span>
+<span class="k">def</span> <span class="nf">get_ip_address</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span><span class="n">socket</span><span class="p">.</span><span class="nf">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">socket</span><span class="p">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">connect</span><span class="p">((</span><span class="sh">"</span><span class="s">1.1.1.1</span><span class="sh">"</span><span class="p">,</span><span class="mi">80</span><span class="p">))</span>
+    <span class="n">ipaddr</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="nf">getsockname</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ipaddr</span>
+
+<span class="k">def</span> <span class="nf">sendEmail</span><span class="p">():</span>
+    <span class="n">ret</span><span class="o">=</span><span class="bp">True</span>
+    <span class="n">ipaddr</span><span class="o">=</span><span class="nf">str</span><span class="p">(</span><span class="nf">get_ip_address</span><span class="p">());</span>
+    <span class="n">configJsons</span><span class="o">=</span><span class="nf">easyJson</span><span class="p">(</span><span class="n">configpath</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ipaddr</span><span class="o">==</span><span class="n">configJsons</span><span class="p">.</span><span class="n">oldip</span><span class="p">:</span>
+        <span class="n">msgbody</span><span class="o">=</span><span class="sh">'</span><span class="s">%s%s%s%s%s%s%s</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span><span class="sh">'</span><span class="se">\n\n</span><span class="sh">'</span><span class="p">,</span> <span class="n">piname</span><span class="p">,</span> <span class="sh">'</span><span class="s">ip is the same,with </span><span class="sh">'</span><span class="p">,</span> <span class="n">ipaddr</span> <span class="p">,</span> <span class="sh">'</span><span class="s"> ,history: </span><span class="sh">'</span> <span class="p">,</span> <span class="n">configJsons</span><span class="p">.</span><span class="n">date</span> <span class="p">,</span><span class="sh">'</span><span class="se">\n</span><span class="s">adding new wifi info. you should</span><span class="se">\"</span><span class="s">cd /etc/wpa_supplicant # vi wpa_supplicant.conf</span><span class="se">\"</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">subjectPrefix</span><span class="o">=</span><span class="n">piname</span> <span class="o">+</span><span class="sh">'</span><span class="s"> WLAN IP no change</span><span class="sh">'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msgbody</span><span class="o">=</span><span class="sh">'</span><span class="s">%s%s%s%s%s%s%s%s%s</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span><span class="sh">'</span><span class="s"> </span><span class="se">\n\n</span><span class="sh">'</span><span class="p">,</span> <span class="n">piname</span> <span class="p">,</span><span class="sh">'</span><span class="s">new ip is </span><span class="sh">'</span><span class="p">,</span> <span class="n">ipaddr</span> <span class="p">,</span><span class="sh">'</span><span class="s"> .</span><span class="se">\n</span><span class="s"> old ip is</span><span class="sh">'</span> <span class="p">,</span> <span class="n">configJsons</span><span class="p">.</span><span class="n">oldip</span> <span class="p">,</span> <span class="sh">'</span><span class="s">,history:</span><span class="sh">'</span> <span class="p">,</span> <span class="n">configJsons</span><span class="p">.</span><span class="n">date</span> <span class="p">,</span> <span class="sh">'</span><span class="se">\n\n</span><span class="s">apaty from SSH ip, you should change DNS</span><span class="se">\'</span><span class="s">vi /etc/dnsmasq.conf</span><span class="se">\'</span><span class="s"> listen-address=</span><span class="se">\n</span><span class="s">adding new wifi info. you should</span><span class="se">\"</span><span class="s">cd /etc/wpa_supplicant# vi wpa_supplicant.conf</span><span class="se">\"</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">subjectPrefix</span><span class="o">=</span><span class="sh">'</span><span class="s">!!!</span><span class="sh">'</span><span class="o">+</span> <span class="n">piname</span> <span class="o">+</span><span class="sh">'</span><span class="s"> WLAN IP change</span><span class="sh">'</span>
+    <span class="n">cur</span><span class="o">=</span><span class="n">datetime</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span>
+    <span class="n">configJsons</span><span class="p">.</span><span class="n">date</span><span class="o">=</span><span class="sh">'</span><span class="s">%s%s%s%s%s%s%s%s%s</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">cur</span><span class="p">.</span><span class="n">year</span> <span class="p">,</span> <span class="sh">'</span><span class="s">/</span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">month</span> <span class="p">,</span> <span class="sh">'</span><span class="s">/</span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">day</span> <span class="p">,</span> <span class="sh">'</span><span class="s"> </span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">hour</span> <span class="p">,</span> <span class="sh">'</span><span class="s">:</span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">minute</span>    <span class="p">)</span>
+    <span class="n">configJsons</span><span class="p">.</span><span class="n">oldip</span><span class="o">=</span><span class="n">ipaddr</span>
+    <span class="n">configJsons</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="n">configpath</span><span class="p">)</span>
+<span class="c1">#    configJsons.save("/home/ubuntu/pythonScripts/wlanIPconfig.json")
+</span>    <span class="k">try</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">sending</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">msg</span><span class="o">=</span><span class="nc">MIMEText</span><span class="p">(</span><span class="n">msgbody</span><span class="p">,</span><span class="sh">'</span><span class="s">plain</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">From</span><span class="sh">'</span><span class="p">]</span><span class="o">=</span><span class="nf">formataddr</span><span class="p">([</span><span class="sh">"</span><span class="s">usr</span><span class="sh">"</span><span class="p">,</span><span class="n">sender_name</span><span class="p">])</span>
+        <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">To</span><span class="sh">'</span><span class="p">]</span><span class="o">=</span><span class="nf">formataddr</span><span class="p">([</span><span class="sh">"</span><span class="s">reciever</span><span class="sh">"</span><span class="p">,</span><span class="n">receiver</span><span class="p">])</span>
+        <span class="n">cur</span><span class="o">=</span><span class="n">datetime</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span>
+        <span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">Subject</span><span class="sh">'</span><span class="p">]</span><span class="o">=</span><span class="sh">'</span><span class="s">%s%s%s%s%s%s%s%s%s%s%s</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span> <span class="n">subjectPrefix</span> <span class="p">,</span> <span class="sh">'</span><span class="s">-</span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">year</span> <span class="p">,</span> <span class="sh">'</span><span class="s">/</span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">month</span> <span class="p">,</span> <span class="sh">'</span><span class="s">/</span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">day</span> <span class="p">,</span> <span class="sh">'</span><span class="s"> </span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">hour</span> <span class="p">,</span> <span class="sh">'</span><span class="s">:</span><span class="sh">'</span> <span class="p">,</span> <span class="n">cur</span><span class="p">.</span><span class="n">minute</span><span class="p">)</span>
+        <span class="n">server</span><span class="o">=</span><span class="n">smtplib</span><span class="p">.</span><span class="nc">SMTP_SSL</span><span class="p">(</span><span class="n">sender_server</span><span class="p">,</span><span class="n">sender_port</span><span class="p">)</span>
+        <span class="n">server</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="n">sender_name</span><span class="p">,</span><span class="n">sender_passwd</span><span class="p">)</span>
+        <span class="n">server</span><span class="p">.</span><span class="nf">sendmail</span><span class="p">(</span><span class="n">sender_name</span><span class="p">,[</span><span class="n">receiver</span><span class="p">,],</span><span class="n">msg</span><span class="p">.</span><span class="nf">as_string</span><span class="p">())</span>
+        <span class="n">server</span><span class="p">.</span><span class="nf">quit</span><span class="p">()</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">finish</span><span class="sh">'</span><span class="p">)</span>
+<span class="c1">######optional tg
+#        print('send tg')
+#        pushform={'text':msgbody}
+#        params = json.dumps(pushform)
+#        params = bytes(params, 'utf8')
+#        headers={'Accept-Charset': 'utf-8', 'Content-Type': 'application/json','User-Agent':'Mozilla/5.0 3578.98 Safari/537.36'}
+#        resp=urllib.request.Request(url=tgpushurl,data=params,headers=headers,method='POST')
+#        response = urllib.request.urlopen(resp).read()
+#        ret=True
+#        print('finish')
+######
+</span>    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">ret</span><span class="o">=</span><span class="bp">False</span>
+
+<span class="k">if</span>  <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span> <span class="p">:</span>
+    <span class="n">piname</span><span class="o">=</span><span class="sh">"</span><span class="s">wd-pi</span><span class="sh">"</span>
+    <span class="n">configpath</span><span class="o">=</span><span class="sh">"</span><span class="s">/usr/local/report_py/wlanIPconfig.json</span><span class="sh">"</span>
+    <span class="n">sender_name</span><span class="o">=</span><span class="sh">'</span><span class="s">3271391891@qq.com</span><span class="sh">'</span>
+    <span class="n">sender_passwd</span><span class="o">=</span><span class="sh">"</span><span class="s">gfzbqrrnozhmchee</span><span class="sh">"</span>
+    <span class="n">sender_server</span><span class="o">=</span><span class="sh">"</span><span class="s">smtp.qq.com</span><span class="sh">"</span>
+    <span class="n">sender_port</span><span class="o">=</span><span class="mi">465</span>
+    <span class="n">receiver</span><span class="o">=</span><span class="sh">'</span><span class="s">wd3271391891@mail.ustc.edu.cn</span><span class="sh">'</span>
+<span class="c1">#    tgpushurl='optional'
+</span>    <span class="nf">check_network</span><span class="p">()</span>
+    <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="nf">sendEmail</span><span class="p">()</span>
+</code></pre></div></div> <h2 id="wlanipconfigjson">wlanIPconfig.json</h2> <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024/3/5 13:20"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"oldip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.65.9.3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div> <p>This is a file about the last update data.</p> <h2 id="getwlanipsh">getwlanip.sh</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh -e</span>
+<span class="nb">cd</span> /usr/local/report_py/
+<span class="nb">sudo </span>python3 getwlanip.py
+</code></pre></div></div> <h1 id="privilige">Privilige</h1> <p>You’d better write a <strong>rc-local.service</strong> in /etcsystemd/system/</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=/etc/rc.local Compatibility
+ConditionPathExists=/etc/rc.local
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div></div> <p>And write them in terminal.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo chmod 777 .py
+sudo chmod 777 getwlanip.sh
+sudo chmod +x /etc/rc.local
+sudo systemctl start rc-local.service
+sudo systemctl enable rc-local.service
+</code></pre></div></div>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[automatically report the ip in ubuntu rsp-pi]]></summary></entry><entry><title type="html">a post with code diff</title><link href="https://wd1234567890.github.io/blog/2024/code-diff/" rel="alternate" type="text/html" title="a post with code diff"/><published>2024-01-27T19:22:00+00:00</published><updated>2024-01-27T19:22:00+00:00</updated><id>https://wd1234567890.github.io/blog/2024/code-diff</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2024/code-diff/"><![CDATA[<p>You can display diff code by using the regular markdown syntax:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">diff
 </span><span class="gh">diff --git a/sample.js b/sample.js
 index 0000001..0ddf2ba
 </span><span class="gd">--- a/sample.js
@@ -726,73 +928,7 @@ index 3bb754ac..a34839c0 100644
     \draw[green,fill=black!60!green] (0,0) circle [x radius=1.5cm, y radius=10mm];
     \draw[blue,fill=black!60!blue] (0,0) circle [x radius=1cm, y radius=5mm, rotate=30];
 \end{tikzpicture}
-</script>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="diagrams"/><summary type="html"><![CDATA[this is what included TikZ code could look like]]></summary></entry><entry><title type="html">a post with code</title><link href="https://wd1234567890.github.io/blog/2023/code/" rel="alternate" type="text/html" title="a post with code"/><published>2023-07-15T15:09:00+00:00</published><updated>2023-07-15T15:09:00+00:00</updated><id>https://wd1234567890.github.io/blog/2023/code</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2023/code/"><![CDATA[<p>This theme implements a built-in Jekyll feature, the use of Rouge, for syntax highlighting. It supports more than 100 languages. This example is in C++. All you have to do is wrap your code in markdown code tags:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">c++
-</span><span class="n">code</span> <span class="n">code</span> <span class="n">code</span>
-<span class="p">```</span>
-</code></pre></div></div> <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="err">\</span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-    <span class="n">string</span> <span class="n">myString</span><span class="p">;</span>
-
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"input a string: "</span><span class="p">;</span>
-    <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">myString</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">myString</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
-
-    <span class="kt">char</span> <span class="n">charArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span> <span class="o">*</span> <span class="p">[</span><span class="n">length</span><span class="p">];</span>
-
-    <span class="n">charArray</span> <span class="o">=</span> <span class="n">myString</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">charArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div> <p>For displaying code in a list item, you have to be aware of the indentation, as stated in this <a href="https://stackoverflow.com/questions/34987908/embed-a-code-block-in-a-list-item-with-proper-indentation-in-kramdown/38090598#38090598">Stackoverflow answer</a>. You must indent your code by <strong>(3 * bullet_indent_level)</strong> spaces. This is because kramdown (the markdown engine used by Jekyll) indentation for the code block in lists is determined by the column number of the first non-space character after the list item marker. For example:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> We can put fenced code blocks inside nested bullets, too.
-<span class="p">
-   1.</span> Like this:<span class="sb">
-
-      ```c
-      printf("Hello, World!");
-      ```
-
-</span><span class="p">   2.</span> The key is to indent your fenced block in the same line as the first character of the line.
-</code></pre></div></div> <p>Which displays:</p> <ol> <li> <p>We can put fenced code blocks inside nested bullets, too.</p> <ol> <li> <p>Like this:</p> <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">);</span>
-</code></pre></div> </div> </li> <li> <p>The key is to indent your fenced block in the same line as the first character of the line.</p> </li> </ol> </li> </ol> <p>By default, it does not display line numbers. If you want to display line numbers for every code block, you can set <code class="language-plaintext highlighter-rouge">kramdown.syntax_highlighter_opts.block.line_numbers</code> to true in your <code class="language-plaintext highlighter-rouge">_config.yml</code> file.</p> <p>If you want to display line numbers for a specific code block, all you have to do is wrap your code in a liquid tag:</p> <p>{% highlight c++ linenos %} <br/> code code code <br/> {% endhighlight %}</p> <p>The keyword <code class="language-plaintext highlighter-rouge">linenos</code> triggers display of line numbers. Produces something like this:</p> <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-</pre></td><td class="code"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="err">\</span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-<span class="n">string</span> <span class="n">myString</span><span class="p">;</span>
-
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"input a string: "</span><span class="p">;</span>
-    <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">myString</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">myString</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
-
-    <span class="kt">char</span> <span class="n">charArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span> <span class="o">*</span> <span class="p">[</span><span class="n">length</span><span class="p">];</span>
-
-    <span class="n">charArray</span> <span class="o">=</span> <span class="n">myString</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">charArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-
-<span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></figure>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[an example of a blog post with some code]]></summary></entry><entry><title type="html">a post with bibliography</title><link href="https://wd1234567890.github.io/blog/2023/post-bibliography/" rel="alternate" type="text/html" title="a post with bibliography"/><published>2023-07-12T13:56:00+00:00</published><updated>2023-07-12T13:56:00+00:00</updated><id>https://wd1234567890.github.io/blog/2023/post-bibliography</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2023/post-bibliography/"><![CDATA[<p>This post shows how to add bibliography to simple blog posts. We support every citation style that <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> does. That means simple citation like <a class="citation" href="#einstein1950meaning">(Einstein &amp; Taub, 1950)</a>, multiple citations like <a class="citation" href="#einstein1950meaning">(Einstein &amp; Taub, 1950; Einstein, 1905)</a>, long references like <span id="einstein1905movement">Einstein, A. (1905). Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat. <i>Ann. Phys.</i>, <i>17</i>, 549–560.</span> or also quotes:</p> <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br/>sed do eiusmod tempor.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p><cite><a class="citation" href="#einstein1905electrodynamics">(Einstein, 1905)</a></cite></blockquote> <p>If you would like something more academic, check the <a href="/blog/2021/distill/">distill style post</a>.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="bib"/><summary type="html"><![CDATA[an example of a blog post with bibliography]]></summary></entry><entry><title type="html">a post with jupyter notebook</title><link href="https://wd1234567890.github.io/blog/2023/jupyter-notebook/" rel="alternate" type="text/html" title="a post with jupyter notebook"/><published>2023-07-04T12:57:00+00:00</published><updated>2023-07-04T12:57:00+00:00</updated><id>https://wd1234567890.github.io/blog/2023/jupyter-notebook</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2023/jupyter-notebook/"><![CDATA[<p>To include a jupyter notebook in a post, you can use the following code:</p> <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{::nomarkdown}
+</script>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="diagrams"/><summary type="html"><![CDATA[this is what included TikZ code could look like]]></summary></entry><entry><title type="html">a post with bibliography</title><link href="https://wd1234567890.github.io/blog/2023/post-bibliography/" rel="alternate" type="text/html" title="a post with bibliography"/><published>2023-07-12T13:56:00+00:00</published><updated>2023-07-12T13:56:00+00:00</updated><id>https://wd1234567890.github.io/blog/2023/post-bibliography</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2023/post-bibliography/"><![CDATA[<p>This post shows how to add bibliography to simple blog posts. We support every citation style that <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> does. That means simple citation like <a class="citation" href="#einstein1950meaning">(Einstein &amp; Taub, 1950)</a>, multiple citations like <a class="citation" href="#einstein1950meaning">(Einstein &amp; Taub, 1950; Einstein, 1905)</a>, long references like <span id="einstein1905movement">Einstein, A. (1905). Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat. <i>Ann. Phys.</i>, <i>17</i>, 549–560.</span> or also quotes:</p> <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,<br/>sed do eiusmod tempor.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p><cite><a class="citation" href="#einstein1905electrodynamics">(Einstein, 1905)</a></cite></blockquote> <p>If you would like something more academic, check the <a href="/blog/2021/distill/">distill style post</a>.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="bib"/><summary type="html"><![CDATA[an example of a blog post with bibliography]]></summary></entry><entry><title type="html">a post with jupyter notebook</title><link href="https://wd1234567890.github.io/blog/2023/jupyter-notebook/" rel="alternate" type="text/html" title="a post with jupyter notebook"/><published>2023-07-04T12:57:00+00:00</published><updated>2023-07-04T12:57:00+00:00</updated><id>https://wd1234567890.github.io/blog/2023/jupyter-notebook</id><content type="html" xml:base="https://wd1234567890.github.io/blog/2023/jupyter-notebook/"><![CDATA[<p>To include a jupyter notebook in a post, you can use the following code:</p> <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{::nomarkdown}
 <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">jupyter_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'assets/jupyter/blog.ipynb'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">relative_url</span><span class="w"> </span><span class="cp">%}</span>
 <span class="cp">{%</span><span class="w"> </span><span class="nt">capture</span><span class="w"> </span><span class="nv">notebook_exists</span><span class="w"> </span><span class="cp">%}{%</span><span class="w"> </span><span class="nt">file_exists</span><span class="w"> </span>assets/jupyter/blog.ipynb<span class="w"> </span><span class="cp">%}{%</span><span class="w"> </span><span class="nt">endcapture</span><span class="w"> </span><span class="cp">%}</span>
 <span class="cp">{%</span><span class="w"> </span><span class="nt">if</span><span class="w"> </span><span class="nv">notebook_exists</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'true'</span><span class="w"> </span><span class="cp">%}</span>
