@@ -1,6 +1,6 @@
 ---
 layout: post
-title: a post with automatic report ip
+title: The Introduction to PDF
 date: 2024-04-01 15:09:00
 description: Why we cannot copy words in pdf so easily?
 tags: formatting
