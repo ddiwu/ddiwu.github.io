@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
@@ -21,7 +21,7 @@ Welcome Here!
 
 I am Di Wu, an undergraduate in University of Science and Technology of China (USTC). Last year, I did some research about SerDes supervised by [Prof. Lei Zhao](http://staff.ustc.edu.cn/~zlei/). 
 
-Next semester, I will go to NUS in singpore to have a summer internship supervised by [Prof. He](https://www.comp.nus.edu.sg/~hebs/) and [Prof. Chen](https://www.yaochen.site).
+New until January, I will be in NUS in singpore to have a summer internship supervised by [Prof. He](https://www.comp.nus.edu.sg/~hebs/) and [Prof. Chen](https://www.yaochen.site).
 
 I will receive my B.S. degree in 2025. And my research interests include VLSI and computer architecture.
 
