@@ -5,7 +5,7 @@
     "email": "wd3271391891@mail.ustc.edu.cn",
     "phone": "(+86) 19359106198",
     "url": "https://ddiwu.com",
-    "summary": "An undergraduate student, interested in computer architecture and systems",
+    "summary": "An undergraduate student, interested in computer system and architecture",
     "location": {
       "address": "",
       "postalCode": "120414",
@@ -34,7 +34,7 @@
     {
       "institution": "University of Science and Technology in China, USTC",
       "location": "He Fei, China",
-      "url": "https://www.ustc.edu.cn/",
+      "url": "https://en.ustc.edu.cn/",
       "area": "Physics and Computer Science",
       "studyType": "B.S.",
       "startDate": "2021",
@@ -56,7 +56,7 @@
       "summary": ""
     },
     {
-      "name": "A 4×6.25-Gbs Serial Link Transmitter Core in 0.18-μm CMOS for high-speed front-end ASICs",
+      "name": "A 4x6.25-Gbs Serial Link Transmitter Core in 0.18-μm CMOS for high-speed front-end ASICs",
       "releaseDate": "2024",
       "url": "https://indico.cern.ch/event/940112/contributions/5764954/"
     }
@@ -91,7 +91,7 @@
       "icon": "fa-solid fa-tag",
       "keywords": [
         "Computer architecture",
-        "Computer systems",
+        "Computer system",
         "VLSI"
       ]
     }
