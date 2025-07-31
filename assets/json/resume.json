@@ -5,7 +5,7 @@
     "email": "wd3271391891@mail.ustc.edu.cn",
     "phone": "(+86) 19359106198",
     "url": "https://ddiwu.com",
-    "summary": "An undergraduate student, interested in computer system and architecture",
+    "summary": "An PhD student, interested in computer system",
     "location": {
       "address": "",
       "postalCode": "120414",
@@ -22,6 +22,15 @@
     ]
   },
   "education": [
+    {
+      "institution": "University of Toronto",
+      "location": "Toronto, Canada",
+      "url": "https://web.cs.toronto.edu/",
+      "area": "Computer Science",
+      "studyType": "Ph.D.",
+      "startDate": "2025",
+      "endDate": "Present"
+    },
     {
       "institution": "National University of Singapore, NUS",
       "location": "Singapore",
@@ -49,6 +58,10 @@
     }
   ],
   "publications": [
+    {
+      "name": "Configurable DSP-Based CAM Architecture for Data-Intensive Applications on FPGAs",
+      "releaseDate": "2025"
+    },
     {
       "name": "Thiol Ligand-Modified Au for Highly Efficient Electroreduction of Nitrate to Ammoniar",
       "releaseDate": "2024",
@@ -90,9 +103,8 @@
       "name": "CS",
       "icon": "fa-solid fa-tag",
       "keywords": [
-        "Computer architecture",
         "Computer system",
-        "VLSI"
+        "Computer architecture"
       ]
     }
   ]

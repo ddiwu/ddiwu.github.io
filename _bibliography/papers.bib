@@ -1,6 +1,16 @@
 ---
 ---
 
+@article{CAM,
+  abbr={CAM},
+  title={Configurable DSP-Based CAM Architecture for Data-Intensive Application FPGAs},
+  author={Yao Chen, Feng Yu, Di Wu, Weng-Fai Wong, Bingsheng He},
+  abstract={Content-addressable memory (CAM) is a type of fast memory unique in its ability to perform parallel searches of stored data based on content rather than specific memory addresses. They have been used in many domains, such as networking, databases, and graph processing. Field-programmable gate arrays (FPGAs) are an attractive means to implement CAMs because of their low latency, reconfigurable, and energy-efficient nature. However, such implementations also face significant challenges, including high resource utilization, limited scalability, and suboptimal performance due to the extensive use of look-up tables (LUTs) and block RAMs (BRAMs). These issues stem from the inherent limitations of FPGA architectures when handling the parallel operations required by CAMs, often leading to inefficient designs that cannot meet the demands of high-speed, data-intensive applications. To address these challenges, we propose a novel configurable CAM architecture that leverages the digital signal processing (DSP) blocks available in modern FPGAs as the core resource. By utilizing DSP blocks' data storage and logic capabilities, our approach enables configurable CAM architecture with efficient multi-query support while significantly reducing search and update latency for data-intensive applications. The DSP-based CAM architecture offers enhanced scalability, higher operating frequencies, and improved performance compared to traditional LUT and BRAM-based designs. In addition, we demonstrate the effectiveness of our proposed CAM architecture with a triangle counting application on real graphs. This innovative use of DSP blocks also opens up new possibilities for high-performance, data-intensive applications on FPGAs. Our proposed design is open-sourced at: https://github.com/ddiwu/CAM/},
+  journal={Design Automation Conference (DAC)},
+  year={2025},
+  pdf={cam.pdf}
+}
+
 @article{SerDes,
   abbr={SerDes},
   title={A 4x6.25-Gbs Serial Link Transmitter Core in 0.18-μm CMOS for high-speed front-end ASICs},
