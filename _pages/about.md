@@ -27,6 +27,6 @@ latest_posts:
 ---
 Welcome Here!
 
-I am Di Wu, a PhD student in the Computer Science Department at University of Toronto, advised by [Qizhen Zhang](https://qizhenzhang.me/). I am interested in GPU DB, network and other system issues.
+I am Di Wu, a PhD student in the Computer Science Department at University of Toronto, advised by [Prof. Qizhen Zhang](https://qizhenzhang.me/). I am interested in GPU DB, network and other system issues.
 
 Previously, I was fortunate to work with [Prof. Lei Zhao](http://staff.ustc.edu.cn/~zlei/) at USTC, [Prof. Bingsheng He](https://www.comp.nus.edu.sg/~hebs/) and [Prof. Yao Chen](https://www.yaochen.site) at NUS.

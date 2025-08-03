@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I arrived Toronto! :smile:
+I arrived at Toronto! :smile:
