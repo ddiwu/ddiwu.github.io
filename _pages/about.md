@@ -8,21 +8,24 @@ profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Jin Zhai street</p>
-    <p>He Fei, China</p>
+  more_info: 
+    <p>Toronto, CA</p>
 
-news: true # includes a list of news items
-latest_posts: true # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+
+announcements:
+  enabled: true # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
+
+latest_posts:
+  enabled: false
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit: 1 # leave blank to include all the blog posts
 ---
 Welcome Here!
 
-I am Di Wu, an undergraduate in University of Science and Technology of China (USTC). Last year, I did some research about SerDes supervised by [Prof. Lei Zhao](http://staff.ustc.edu.cn/~zlei/). 
+I am **Di Wu**, an first-year PhD student in University of Toronto (UofT), where I am fortunate to be advised by [Prof. Qizhen Zhang](http://qizhenzhang.me/). I received my bachelor’s degree from University of Science and Technology of China (USTC), and I also spent a summer as a research intern at Xtra Computing group, NUS.
 
-Now until January 2025, I am at National University of Singapore (NUS) as an intern supervised by [Prof. He](https://www.comp.nus.edu.sg/~hebs/) and [Prof. Chen](https://www.yaochen.site).
-
-I am applying for a Ph.D. in CS or ECE, and will receive my B.S. degree in 2025. My research interests mainly include computer system and architecture.
-
-If you want to find my [CV](/assets/pdf/CV.pdf) and [transcript](/assets/pdf/trans.pdf), please click.
+My research interests lie broadly in **GPU communication frameworks**, **RDMA-based communication and architecture**, and **GPU-accelerated database management systems**. My long-term goal is to build efficient and scalable data processing systems, especially on emerging hardware.

@@ -2,16 +2,15 @@
   "basics": {
     "name": "Di Wu",
     "image": "",
-    "email": "wd3271391891@mail.ustc.edu.cn",
+    "email": "diwu@cs.toronto.edu",
     "phone": "(+86) 19359106198",
     "url": "https://ddiwu.com",
-    "summary": "An undergraduate student, interested in computer system and architecture",
     "location": {
       "address": "",
-      "postalCode": "120414",
-      "city": "Singapore",
-      "countryCode": "Singapore",
-      "region": "Singapore"
+      "postalCode": "M4Y0C4",
+      "city": "Toronto",
+      "countryCode": "Canada",
+      "region": "Ontario"
     },
     "profiles": [
       {
@@ -22,6 +21,15 @@
     ]
   },
   "education": [
+    {
+      "institution": "University of Toronto, UofT",
+      "location": "Toronto, Canada",
+      "url": "https://www.utoronto.ca/",
+      "area": "Computer Science",
+      "studyType": "Ph.D.",
+      "startDate": "2025",
+      "endDate": "Pre"
+    },
     {
       "institution": "National University of Singapore, NUS",
       "location": "Singapore",
@@ -38,7 +46,7 @@
       "area": "Physics and Computer Science",
       "studyType": "B.S.",
       "startDate": "2021",
-      "endDate": "Pre."
+      "endDate": "2025."
     }
   ],
   "awards": [
@@ -50,9 +58,9 @@
   ],
   "publications": [
     {
-      "name": "Thiol Ligand-Modified Au for Highly Efficient Electroreduction of Nitrate to Ammoniar",
-      "releaseDate": "2024",
-      "url": "https://pubs.acs.org/doi/10.1021/prechem.3c00107",
+      "name": "Configurable DSP-Based CAM Architecture for Data-Intensive Applications on FPGAs",
+      "releaseDate": "2025",
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11132888",
       "summary": ""
     },
     {
@@ -64,12 +72,12 @@
   "skills": [
     {
       "name": "CS",
-      "level": "B.S.",
+      "level": "Ph.D. Candidate",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Verilog/System Verilog/HLS",
-        "C/C++, Python, Latex",
-        "Linux, GitHub, Vivado, Vitis"
+        "Verilog/HLS",
+        "C/C++, CUDA, Python, Latex",
+        "Linux, GitHub, DOCA, Vivado"
       ]
     }
   ],
@@ -90,9 +98,8 @@
       "name": "CS",
       "icon": "fa-solid fa-tag",
       "keywords": [
-        "Computer architecture",
         "Computer system",
-        "VLSI"
+        "Computer architecture"
       ]
     }
   ]

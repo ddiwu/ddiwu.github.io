@@ -4,7 +4,7 @@ title: CAM
 description: Content Addressing Memory on FPGA
 img: assets/img/CAM.png
 importance: 1
-category: current
+category: past
 related_publications: false
 ---
 

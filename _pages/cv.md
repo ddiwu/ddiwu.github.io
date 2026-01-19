@@ -4,8 +4,8 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
-cv_pdf: CV.pdf
-description: Please get my CV by the PDF dowload button.
+cv_pdf: /assets/pdf/CV.pdf
+description: This is my resume.
 toc:
   sidebar: left
 ---

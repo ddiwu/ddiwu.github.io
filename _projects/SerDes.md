@@ -3,7 +3,7 @@ layout: page
 title: SerDes
 description: Testing and analysis of a SerDes prototype chip
 img: assets/img/SerDes.png
-importance: 1
+importance: 3
 category: past
 ---
 
