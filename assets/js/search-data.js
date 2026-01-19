@@ -32,7 +32,7 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "CV",
-          description: "Please get my CV by the PDF dowload button.",
+          description: "This is my resume.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
@@ -46,6 +46,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2025/plotly/";
+          
+        },
+      },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
+        
+          title: 'Google Gemini updates: Flash 1.5, Gemma 2 and Project Astra <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "We’re sharing updates across our Gemini family of models and a glimpse of Project Astra, our vision for the future of AI assistants.",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/", "_blank");
           
         },
       },{id: "post-the-introduction-to-pdf",
@@ -268,6 +279,17 @@ ninja.data = [{
             window.location.href = "/blog/2022/giscus-comments/";
           
         },
+      },{id: "post-displaying-external-posts-on-your-al-folio-blog",
+        
+          title: 'Displaying External Posts on Your al-folio Blog <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
+          
+        },
       },{id: "post-redirect",
         
           title: "Redirect",
@@ -389,25 +411,45 @@ ninja.data = [{
           section: "News",},{id: "news-my-paper-configurable-dsp-based-cam-architecture-for-data-intensive-application-fpgas-has-been-accepted-by-dac-25",
           title: 'My paper “Configurable DSP-Based CAM Architecture for Data-Intensive Application FPGAs” has been accepted...',
           description: "",
-          section: "News",},{id: "news-i-arrived-at-toronto-smile",
-          title: 'I arrived at Toronto! :smile:',
+          section: "News",},{id: "news-i-arrived-at-toronto",
+          title: 'I arrived at Toronto!',
           description: "",
           section: "News",},{id: "projects-cam",
           title: 'CAM',
           description: "Content Addressing Memory on FPGA",
           section: "Projects",handler: () => {
               window.location.href = "/projects/CAM/";
+            },},{id: "projects-mlir",
+          title: 'MLIR',
+          description: "Research on GPU Operator Optimization Based on MLIR",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/MLIR/";
+            },},{id: "projects-magi",
+          title: 'Magi',
+          description: "Communication Framework for Data Processing in Massive GPU Infrastructures",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/Magi/";
             },},{id: "projects-serdes",
           title: 'SerDes',
           description: "Testing and analysis of a SerDes prototype chip",
           section: "Projects",handler: () => {
               window.location.href = "/projects/SerDes/";
+            },},{id: "teachings-data-science-fundamentals",
+          title: 'Data Science Fundamentals',
+          description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/data-science-fundamentals/";
+            },},{id: "teachings-introduction-to-machine-learning",
+          title: 'Introduction to Machine Learning',
+          description: "This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/introduction-to-machine-learning/";
             },},{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%77%64%33%32%37%31%33%39%31%38%39%31@%6D%61%69%6C.%75%73%74%63.%65%64%75.%63%6E", "_blank");
+          window.open("mailto:%64%69%77%75@%63%73.%74%6F%72%6F%6E%74%6F.%65%64%75", "_blank");
         },
       },{
         id: 'social-github',
@@ -417,11 +459,11 @@ ninja.data = [{
           window.open("https://github.com/ddiwu", "_blank");
         },
       },{
-        id: 'social-wechat_qr',
-        title: 'Wechat_qr',
+        id: 'social-scholar',
+        title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("", "_blank");
+          window.open("https://scholar.google.com/citations?user=osU1fQ4AAAAJ", "_blank");
         },
       },{
       id: 'light-theme',
