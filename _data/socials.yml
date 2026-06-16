@@ -7,7 +7,7 @@
 # bluesky_url: # your bluesky URL
 # dblp_url: # your DBLP profile url
 # discord_id: # your discord id (18-digit unique numerical identifier)
-email: wd3271391891@mail.ustc.edu.cn # your email address
+email: diwu@cs.toronto.edu # your email address
 # facebook_id: # your facebook id
 # flickr_id: # your flickr id
 github_username: ddiwu # your GitHub user name
@@ -39,7 +39,7 @@ github_username: ddiwu # your GitHub user name
 # strava_userid: # your strava user id
 # telegram_username: # your Telegram user name
 # unsplash_id: # your unsplash id
-wechat_qr: wechat-qr.png # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
+# wechat_qr: wechat-qr.png # NOTE: jekyll-socials 0.0.7 (al-folio v1) has no built-in wechat_qr; setting it as a plain string crashes the build. Re-enable later via a v1-compatible mechanism.
 # whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 # wikidata_id: # your wikidata id
 # wikipedia_id: # your wikipedia id (Case sensitive)

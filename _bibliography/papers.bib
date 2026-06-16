@@ -1,14 +1,31 @@
 ---
 ---
 
+@article{MGI2026,
+  abbr={VLDB 2026},
+  title={MGI: A Communication Framework for Data Processing in Massive GPU Infrastructures},
+  author={Di Wu, Hongshi Tan, Hanzhang Yang, Bingsheng He, Qizhen Zhang},
+  abstract={This paper presents MGI, a general communication framework for performing data processing tasks in massive GPU infrastructures. Inter-GPU data transfer performance is crucial to multi-GPU data processing, and existing solutions repeatedly implement the same set of communication optimizations. MGI identifies these techniques and applies them judiciously behind a simple interface. Enabling MGI are (1) a central controller that models relevant hardware resources as an annotated graph and automates infrastructure-level optimizations to construct transfer plans and (2) a scalable data plane where buffers and executors are carefully designed to incorporate device- and link-level optimizations to execute data transfers efficiently. Our experiments on a variety of GPU infrastructures and workloads show that MGI significantly improves multi-GPU data processing performance compared to existing frameworks.},
+  journal={Proceedings of the VLDB Endowment (PVLDB)},
+  volume={19},
+  number={9},
+  pages={2262--2275},
+  year={2026},
+  doi={10.14778/3819518.3819549},
+  code={https://github.com/fardatalab/MGI},
+  pdf={magi_final.pdf},
+  selected={true}
+}
+
 @article{CAM,
-  abbr={CAM},
+  abbr={DAC 2025},
   title={Configurable DSP-Based CAM Architecture for Data-Intensive Application FPGAs},
   author={Yao Chen, Feng Yu, Di Wu, Weng-Fai Wong, Bingsheng He},
   abstract={Content-addressable memory (CAM) is a type of fast memory unique in its ability to perform parallel searches of stored data based on content rather than specific memory addresses. They have been used in many domains, such as networking, databases, and graph processing. Field-programmable gate arrays (FPGAs) are an attractive means to implement CAMs because of their low latency, reconfigurable, and energy-efficient nature. However, such implementations also face significant challenges, including high resource utilization, limited scalability, and suboptimal performance due to the extensive use of look-up tables (LUTs) and block RAMs (BRAMs). These issues stem from the inherent limitations of FPGA architectures when handling the parallel operations required by CAMs, often leading to inefficient designs that cannot meet the demands of high-speed, data-intensive applications. To address these challenges, we propose a novel configurable CAM architecture that leverages the digital signal processing (DSP) blocks available in modern FPGAs as the core resource. By utilizing DSP blocks' data storage and logic capabilities, our approach enables configurable CAM architecture with efficient multi-query support while significantly reducing search and update latency for data-intensive applications. The DSP-based CAM architecture offers enhanced scalability, higher operating frequencies, and improved performance compared to traditional LUT and BRAM-based designs. In addition, we demonstrate the effectiveness of our proposed CAM architecture with a triangle counting application on real graphs. This innovative use of DSP blocks also opens up new possibilities for high-performance, data-intensive applications on FPGAs. Our proposed design is open-sourced at: https://github.com/ddiwu/CAM/},
   journal={Design Automation Conference (DAC)},
   year={2025},
-  pdf={cam.pdf}
+  pdf={cam.pdf},
+  selected={true}
 }
 
 @article{SerDes,
@@ -22,7 +39,7 @@
   url={https://pubs.acs.org/doi/10.1021/prechem.3c00107},
   html={https://indico.cern.ch/event/940112/contributions/5764954/},
   pdf={rt2024.pdf},
-  selected={true}
+  selected={false}
 }
 
 @article{Chem,

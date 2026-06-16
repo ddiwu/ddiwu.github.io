@@ -2,16 +2,16 @@
   "basics": {
     "name": "Di Wu",
     "image": "",
-    "email": "wd3271391891@mail.ustc.edu.cn",
+    "email": "diwu@cs.toronto.edu",
     "phone": "(+86) 19359106198",
     "url": "https://ddiwu.com",
     "summary": "An PhD student, interested in computer system",
     "location": {
-      "address": "",
-      "postalCode": "120414",
-      "city": "Singapore",
-      "countryCode": "Singapore",
-      "region": "Singapore"
+      "address": "28 Wellesley St.",
+      "postalCode": "M4Y 0C4",
+      "city": "Toronto",
+      "countryCode": "Canada",
+      "region": "Ontario"
     },
     "profiles": [
       {
@@ -59,17 +59,26 @@
   ],
   "publications": [
     {
+      "name": "MGI: A Communication Framework for Data Processing in Massive GPU Infrastructures",
+      "publisher": "Proceedings of the VLDB Endowment (PVLDB), 19(9): 2262-2275",
+      "releaseDate": "2026",
+      "url": "https://doi.org/10.14778/3819518.3819549"
+    },
+    {
       "name": "Configurable DSP-Based CAM Architecture for Data-Intensive Applications on FPGAs",
-      "releaseDate": "2025"
+      "publisher": "Design Automation Conference (DAC)",
+      "releaseDate": "2025",
+      "url": "https://github.com/ddiwu/CAM/"
     },
     {
       "name": "Thiol Ligand-Modified Au for Highly Efficient Electroreduction of Nitrate to Ammoniar",
+      "publisher": "Precious Chemistry",
       "releaseDate": "2024",
-      "url": "https://pubs.acs.org/doi/10.1021/prechem.3c00107",
-      "summary": ""
+      "url": "https://pubs.acs.org/doi/10.1021/prechem.3c00107"
     },
     {
       "name": "A 4x6.25-Gbs Serial Link Transmitter Core in 0.18-μm CMOS for high-speed front-end ASICs",
+      "publisher": "IEEE Real Time Conference",
       "releaseDate": "2024",
       "url": "https://indico.cern.ch/event/940112/contributions/5764954/"
     }
