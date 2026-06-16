@@ -5,31 +5,24 @@
     "email": "diwu@cs.toronto.edu",
     "phone": "(+86) 19359106198",
     "url": "https://ddiwu.com",
-    "summary": "An PhD student, interested in computer system",
     "location": {
-      "address": "28 Wellesley St.",
-      "postalCode": "M4Y 0C4",
+      "address": "",
+      "postalCode": "M4Y0C4",
       "city": "Toronto",
       "countryCode": "Canada",
       "region": "Ontario"
     },
-    "profiles": [
-      {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
-      }
-    ]
+    "profiles": []
   },
   "education": [
     {
-      "institution": "University of Toronto",
+      "institution": "University of Toronto, UofT",
       "location": "Toronto, Canada",
-      "url": "https://web.cs.toronto.edu/",
+      "url": "https://www.utoronto.ca/",
       "area": "Computer Science",
       "studyType": "Ph.D.",
       "startDate": "2025",
-      "endDate": "Present"
+      "endDate": "Pre"
     },
     {
       "institution": "National University of Singapore, NUS",
@@ -47,7 +40,7 @@
       "area": "Physics and Computer Science",
       "studyType": "B.S.",
       "startDate": "2021",
-      "endDate": "Pre."
+      "endDate": "2025."
     }
   ],
   "awards": [
@@ -68,13 +61,7 @@
       "name": "Configurable DSP-Based CAM Architecture for Data-Intensive Applications on FPGAs",
       "publisher": "Design Automation Conference (DAC)",
       "releaseDate": "2025",
-      "url": "https://github.com/ddiwu/CAM/"
-    },
-    {
-      "name": "Thiol Ligand-Modified Au for Highly Efficient Electroreduction of Nitrate to Ammoniar",
-      "publisher": "Precious Chemistry",
-      "releaseDate": "2024",
-      "url": "https://pubs.acs.org/doi/10.1021/prechem.3c00107"
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11132888"
     },
     {
       "name": "A 4x6.25-Gbs Serial Link Transmitter Core in 0.18-μm CMOS for high-speed front-end ASICs",
@@ -86,12 +73,12 @@
   "skills": [
     {
       "name": "CS",
-      "level": "B.S.",
+      "level": "Ph.D. Candidate",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Verilog/System Verilog/HLS",
-        "C/C++, Python, Latex",
-        "Linux, GitHub, Vivado, Vitis"
+        "Verilog/HLS",
+        "C/C++, CUDA, Python, Latex",
+        "Linux, GitHub, DOCA, Vivado"
       ]
     }
   ],
