@@ -131,6 +131,13 @@
     font-family: var(--sans);
     animation: pulse 2s ease-in-out infinite;
   }
+  .env-count {
+    margin-top: 8px;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: #b7a99d;
+    letter-spacing: .04em;
+  }
   @keyframes pulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
 
   /* ============ 信纸 ============ */
@@ -416,6 +423,7 @@
   </div>
   <div class="env-caption">你的信</div>
   <div class="env-hint">点一下,拆开看看</div>
+  <div class="env-count" id="env-count" hidden></div>
 </div>
 
 <!-- ② 信 -->
@@ -510,10 +518,43 @@
 
   /* ---------- ① 信封 ---------- */
   var envelope = document.getElementById("envelope");
+  var envelopeCount = document.getElementById("env-count");
+  var envelopeCountUrl = "https://counterapi.com/api/ddiwu.github.io/open/lover-letter-envelope-20260817";
   var opened = false;
+
+  function showEnvelopeOpenCount(count) {
+    envelopeCount.hidden = false;
+    envelopeCount.textContent = count > 0
+      ? "这封信已经被打开 " + count + " 次"
+      : "这封信还在等第一次开启";
+  }
+
+  function updateEnvelopeOpenCount(increment) {
+    var url = envelopeCountUrl + (increment ? "?behavior=vote" : "?readOnly=true");
+    if (increment) {
+      envelopeCount.hidden = false;
+      envelopeCount.textContent = "正在记下这次相遇……";
+    }
+    fetch(url, { cache: "no-store", mode: "cors" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("counter request failed");
+        return response.json();
+      })
+      .then(function (data) {
+        var count = Number(data.value);
+        if (Number.isFinite(count) && count >= 0) showEnvelopeOpenCount(count);
+      })
+      .catch(function () {
+        if (increment) envelopeCount.hidden = true;
+      });
+  }
+
+  updateEnvelopeOpenCount(false);
+
   function openEnvelope() {
     if (opened) return;
     opened = true;
+    updateEnvelopeOpenCount(true);
     envelope.classList.add("open");
     setTimeout(function () { fadeSwap("letter"); }, 1300);
   }
