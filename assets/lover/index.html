@@ -3,15 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>桐桐,你有信</title>
+<title>你的信</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
 <style>
+  @import url('https://fonts.loli.net/css?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&display=swap');
   :root {
     --paper: #faf6ee;
     --ink: #3a3230;
     --seal: #b3382e;
     --seal-dark: #8e2b23;
     --muted: #9a8d84;
-    --serif: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "STSong", "SimSun", serif;
+    --hand: "Ma Shan Zheng", "STKaiti", "KaiTi", "Songti SC", cursive;
+    --serif: "Noto Serif SC", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "STSong", "SimSun", serif;
     --sans: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -90,8 +93,8 @@
     border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #d15548, var(--seal) 55%, var(--seal-dark));
     color: #fff;
-    font-family: var(--serif);
-    font-size: 26px;
+    font-family: var(--hand);
+    font-size: 30px;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 10px rgba(140, 40, 30, .4), inset 0 2px 4px rgba(255,255,255,.35);
     z-index: 4;
@@ -116,9 +119,10 @@
   .env-line:nth-child(4) { width: 45%; }
   .env-caption {
     margin-top: 40px;
-    font-size: 17px;
+    font-family: var(--hand);
+    font-size: 28px;
     color: var(--ink);
-    letter-spacing: .1em;
+    letter-spacing: .15em;
   }
   .env-hint {
     margin-top: 10px;
@@ -166,7 +170,9 @@
   }
   .letter p.show { opacity: 1; transform: none; }
   .letter p.final {
-    font-size: clamp(18px, 2.8vw, 21px);
+    font-family: var(--hand);
+    font-size: clamp(22px, 3.6vw, 28px);
+    line-height: 1.9;
     color: var(--seal);
     margin-top: 2.4em;
     margin-bottom: 0;
@@ -203,11 +209,84 @@
   }
   .ask-btn:active { transform: scale(.96); }
 
+  /* ============ 圣诞 · 真实地图 ============ */
+  .xmas-map {
+    width: min(680px, 94vw);
+    height: 340px;
+    margin: 22px auto 0;
+    border-radius: 14px;
+    box-shadow: 0 16px 48px rgba(60, 80, 60, .18);
+    z-index: 1;
+    position: relative;
+  }
+  @media (max-height: 760px) { .xmas-map { height: 280px; } }
+  .leaflet-container {
+    font-family: var(--sans);
+    background: #e8efe4;
+  }
+  .emoji-marker { background: none; border: none; }
+  .emoji-marker span {
+    display: block;
+    font-size: 28px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .3));
+  }
+  .emoji-marker span.beat { animation: heartbeat 1.2s ease-in-out infinite; }
+  .city-pin { background: none; border: none; }
+  .city-pin span {
+    display: block;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--seal);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+  }
+  .leaflet-tooltip.city-tip {
+    font-family: var(--serif);
+    font-size: 14px;
+    background: rgba(255, 253, 247, .94);
+    color: var(--ink);
+    border: none;
+    border-radius: 6px;
+    padding: 3px 10px;
+    box-shadow: 0 2px 8px rgba(90, 60, 30, .15);
+  }
+  .leaflet-tooltip.city-tip::before { display: none; }
+  .xmas-cap {
+    margin-top: 18px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 2;
+    opacity: 1;
+  }
+
+  /* ============ 飘雪 ============ */
+  #snow {
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 45;
+    overflow: hidden;
+  }
+  .flake {
+    position: absolute;
+    top: -30px;
+    color: #fff;
+    text-shadow: 0 0 6px rgba(140, 170, 220, .6);
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { transform: translate(0, -5vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: .95; }
+    100% { transform: translate(var(--sway), 105dvh) rotate(360deg); opacity: .5; }
+  }
+
   /* ============ 问题 ============ */
   #stage-question { position: relative; z-index: 1; text-align: center; }
   .q-title {
-    font-size: clamp(22px, 4.5vw, 30px);
-    line-height: 1.7;
+    font-family: var(--hand);
+    font-size: clamp(30px, 6.5vw, 44px);
+    line-height: 1.6;
     margin-bottom: 16px;
   }
   .q-sub {
@@ -268,7 +347,8 @@
   }
 
   /* ============ 结局 ============ */
-  #stage-yes { z-index: 1; text-align: center; }
+  #stage-yes { z-index: 1; text-align: center; justify-content: flex-start; padding-top: 64px; }
+  .yes-wrap { width: min(680px, 94vw); }
   .yes-heart {
     font-size: clamp(64px, 16vw, 110px);
     animation: heartbeat 1.2s ease-in-out infinite;
@@ -283,8 +363,9 @@
   }
   .yes-title {
     margin-top: 28px;
-    font-size: clamp(24px, 5vw, 34px);
-    line-height: 1.7;
+    font-family: var(--hand);
+    font-size: clamp(30px, 6.5vw, 44px);
+    line-height: 1.6;
   }
   .yes-sub {
     margin-top: 20px;
@@ -333,21 +414,34 @@
       <div class="env-seal">桐</div>
     </div>
   </div>
-  <div class="env-caption">桐桐,你有信。</div>
+  <div class="env-caption">你的信</div>
   <div class="env-hint">点一下,拆开看看</div>
 </div>
 
 <!-- ② 信 -->
 <div id="stage-letter" class="stage" hidden>
   <div class="letter">
-    <div class="letter-date">四月三日</div>
-    <p>四月三日,我收到了你的来信。</p>
-    <p>似乎,小红书和微信上都是空白一片。我对你所知甚少,只觉得你的声音挺好听的,还爱笑,想来应当是很容易聊天的人。不知道是哪句话,我忽然觉得,你好像能听懂我在说什么;也似乎在你的声音里,听见了一点你心中的忧伤。这对我而言,是很难得的事。</p>
-    <p>后来与你说得多了,最初的那一点印象便渐渐清晰起来。我渐渐发现,你身上有一种我很羡慕的安定。似乎无论遇见什么事,你都能慢慢把自己安顿好。这样的独立与稳定,像是在纷乱之中仍有一盏不晃的灯。</p>
-    <p>至于这份吸引究竟是从什么时候变得不同,我也说不清。或许是某一次电话里,你笑得很轻;或许是某一句话,你说中了我没能说出口的心事;又或许并没有一个确切的时刻,只是在那些寻常的日子里,我一点一点地,开始期待与你有关的消息。</p>
-    <p>起初我还不太愿意承认。总觉得这样的心意来得太快,像是春日里忽然落下的一场雨,难以分辨。可后来我发现,自己会在看到有趣的事时想告诉你,会在一天快结束时想听见你的声音,会在生活重新变得慌乱的时候,下意识地想起你。</p>
-    <p>说来有些好笑,我有点像《堂吉诃德》里害了相思病的骑士,明知道这样的期待太不讲道理,却还是日日沉沉闷闷,等着你的电话。许是有些荒唐,可那确是最真切的心情。</p>
-    <p class="final">于是我大概也无法再骗自己了。<br>我想,我是喜欢你的。</p>
+    <div class="letter-date">八月十七日（多伦多时间）</div>
+    <p>四月二日一点零九分，我们初识。</p>
+    <p>五月十六日，我写下了关于你的第一封信。刚认识时，小红书和微信上都是空白一片，我对你所知甚少，只觉得你的声音很好听，爱笑，想来应当是一个很容易聊天的人。</p>
+    <p>不知道是从哪一句话开始，我忽然觉得，你好像能够听懂我在说什么；也似乎从你的声音里，听见了一点没有说出口的忧伤。对我而言，那是一种很少有的感受。</p>
+    <p>后来，我们说了很多话，也一起走过了一百三十七天。</p>
+    <p>最初那些模糊的印象，渐渐变成了一个真实而具体的你。我开始知道你为什么快乐，为什么难过；知道你安定从容的时候，也见过你的不安、倔强和脆弱。</p>
+    <p>我曾经觉得，你像纷乱之中一盏不晃的灯。后来才明白，原来灯也会摇晃，也会有不知道该怎样安顿自己的时候。可这并没有让我失望。相反，当想象中的你一点点变成真实的你，我反而更想理解你，也更想走近你。</p>
+    <p>这四个多月并不总是温柔的。</p>
+    <p>我们有过许多深入的交谈，也有过争吵、误解和情绪最尖锐的时刻。有时我们靠得很近，有时又好像隔着很远。我们都说过没能好好表达的话，也都曾经不知道该怎样理解对方。</p>
+    <p>我不想把争吵写成爱情的证明，因为争吵本身并不浪漫。可是，当那些并不漂亮的时刻过去以后，我发现自己仍然愿意留下来，愿意重新听你说话，愿意弄明白你真正介意的是什么，也愿意让你更加了解我。</p>
+    <p>我才慢慢意识到，我喜欢的已经不再是初识时那个由声音、笑意和想象拼凑出来的你，而是现在这个我见过许多面的、真实的你。</p>
+    <p>我依然会在看见有趣的事情时第一个想到你，会在一天快结束时想听见你的声音，也会在生活重新变得慌乱的时候，下意识地想起你。</p>
+    <p>我好像仍是《堂吉诃德》里那个害了相思病的骑士。只是如今，我期待的已经不只是一通电话。我开始期待，在你的生活里拥有一个确定的位置，也希望你能在我的生活里拥有同样的位置。</p>
+    <p>所以，这一次写下这些话，我不只是想再告诉你一次：</p>
+    <p>我喜欢你。</p>
+    <p>我还想很认真地问你：</p>
+    <p>你愿不愿意正式和我在一起？</p>
+    <p>不是继续停留在一个模糊的、无法说清的身份里，而是成为彼此认真确认的恋人。我想拥有一个可以坦然喜欢你、关心你、陪伴你，也愿意为这段关系负责的名分。</p>
+    <p>五月十六日的我，刚刚遇见你而心动。</p>
+    <p>八月十七日的我，在认识了更真实的你以后，仍然喜欢你，并且比那时更确定。</p>
+    <p class="final">如果你也愿意，我想从今天开始，不再只是日日等着你的电话，而是认真地陪你走下去。</p>
     <div class="letter-sign" id="letter-sign">—— 一个日日等电话的人</div>
     <div class="ask-wrap" id="ask-wrap">
       <button class="ask-btn" id="ask-btn">信读完了,但还有一件事……</button>
@@ -357,8 +451,8 @@
 
 <!-- ③ 问题 -->
 <div id="stage-question" class="stage" hidden>
-  <div class="q-title">桐桐,你愿意<br>让我继续喜欢你吗?</div>
-  <div class="q-sub">(认真脸,不许笑)</div>
+  <div class="q-title">桐桐,愿不愿意<br>做我女朋友?</div>
+  <div class="q-sub">我想带你走遍世界的角落，体验与以前完全不一样的人生</div>
   <div class="btn-area" id="btn-area">
     <button class="yes-btn" id="yes-btn">愿意 ❤</button>
     <button class="no-btn" id="no-btn">再想想</button>
@@ -366,14 +460,18 @@
   </div>
 </div>
 
-<!-- ④ 结局 -->
+<!-- ④ 结局 · 圣诞地图 -->
 <div id="stage-yes" class="stage" hidden>
-  <span class="yes-heart">💗</span>
-  <div class="yes-title">那这盏灯,以后换我来守。</div>
-  <div class="yes-sub">桐桐,谢谢你。<br>往后的日子,还请多指教。</div>
-  <div class="yes-foot">此信只此一份 · 阅后即焚(并没有)</div>
+  <div class="yes-wrap">
+    <span class="yes-heart">💗</span>
+    <div class="yes-title">你这盏灯，以后换我来守</div>
+    <div class="xmas-map" id="xmas-map"></div>
+    <div class="xmas-cap" id="xmas-cap">多伦多 ✈ 香港 🚄 长沙 🚄 娄底<br>11,000 公里，这个圣诞，我陪在你身边</div>
+    <div class="yes-foot">此信只此一份</div>
+  </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (function () {
   "use strict";
@@ -456,26 +554,43 @@
   var hint = document.getElementById("no-hint");
   var area = document.getElementById("btn-area");
   var noLines = [
-    "再想想",
     "你确定吗?",
     "真的不再想想吗?",
     "我有点难过了……",
-    "好吧,最后一次",
-    "按钮它自己不想点,我拦不住",
-    "这个按钮好像坏掉了",
-    "就点愿意吧,好不好"
+    "按钮它自己不想点,我拦不住"
   ];
   var dodges = 0;
 
   function dodge(ev) {
     ev.preventDefault();
     dodges++;
-    noBtn.textContent = noLines[Math.min(dodges, noLines.length - 1)];
-    hint.textContent = "提示:『愿意』按钮长得很真诚";
     hint.style.opacity = "1";
 
+    // 第5下:月亮脸,然后只剩"愿意"
+    if (dodges >= 5) {
+      noBtn.textContent = "🌚";
+      noBtn.style.fontSize = "30px";
+      noBtn.style.padding = "10px 16px";
+      noBtn.style.border = "none";
+      noBtn.style.background = "transparent";
+      noBtn.style.boxShadow = "none";
+      hint.textContent = "月亮代表我的心……";
+      setTimeout(function () {
+        noBtn.style.transition = "opacity .8s ease, transform .8s ease";
+        noBtn.style.opacity = "0";
+        noBtn.style.transform = "translateY(0) scale(1.6)";
+        noBtn.style.pointerEvents = "none";
+        hint.style.opacity = "0";
+        yesBtn.style.transform = "translateY(-50%) scale(1.8)";
+      }, 1100);
+      return;
+    }
+
+    noBtn.textContent = noLines[dodges - 1];
+    hint.textContent = "提示:『愿意』按钮长得很真诚";
+
     // "愿意"越来越大
-    var s = Math.min(1 + dodges * 0.12, 2.1);
+    var s = Math.min(1 + dodges * 0.15, 2.1);
     yesBtn.style.transform = "translateY(-50%) scale(" + s + ")";
 
     // "再想想"逃到随机位置(留在区域内)
@@ -486,10 +601,6 @@
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
     noBtn.style.transform = "translateY(0) scale(" + Math.max(1 - dodges * 0.06, 0.55) + ")";
-
-    if (dodges >= 6) {
-      noBtn.style.opacity = ".35";
-    }
   }
   noBtn.addEventListener("pointerdown", dodge);
   noBtn.addEventListener("contextmenu", function (ev) { ev.preventDefault(); });
@@ -497,7 +608,163 @@
   yesBtn.addEventListener("click", function () {
     burstHearts();
     fadeSwap("yes");
+    setTimeout(startXmas, 900);
   });
+
+  /* ---------- ④ 圣诞 · 真实地图 ---------- */
+  var xmasStarted = false;
+  function easeInOut(p) {
+    return p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+  }
+  function toVec(ll) {
+    var lat = ll.lat * Math.PI / 180, lon = ll.lng * Math.PI / 180;
+    return { x: Math.cos(lat) * Math.cos(lon), y: Math.cos(lat) * Math.sin(lon), z: Math.sin(lat) };
+  }
+  function toLL(v) {
+    return {
+      lat: Math.atan2(v.z, Math.sqrt(v.x * v.x + v.y * v.y)) * 180 / Math.PI,
+      lng: Math.atan2(v.y, v.x) * 180 / Math.PI
+    };
+  }
+  // 大圆航线(真实飞行轨迹)
+  function greatCircle(a, b, n) {
+    var va = toVec(a), vb = toVec(b);
+    var dot = Math.max(-1, Math.min(1, va.x * vb.x + va.y * vb.y + va.z * vb.z));
+    var th = Math.acos(dot), pts = [a];
+    for (var i = 1; i < n; i++) {
+      var t = i / n;
+      var s1 = Math.sin((1 - t) * th) / Math.sin(th);
+      var s2 = Math.sin(t * th) / Math.sin(th);
+      pts.push(toLL({ x: s1 * va.x + s2 * vb.x, y: s1 * va.y + s2 * vb.y, z: s1 * va.z + s2 * vb.z }));
+    }
+    return pts;
+  }
+  function lerpLL(a, b, t) {
+    return { lat: a.lat + (b.lat - a.lat) * t, lng: a.lng + (b.lng - a.lng) * t };
+  }
+  function moveLeg(marker, pts, dur, cb) {
+    var n = pts.length, t0 = null;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var f = easeInOut(p) * (n - 1);
+      var i = Math.min(Math.floor(f), n - 2);
+      marker.setLatLng(lerpLL(pts[i], pts[i + 1], f - i));
+      if (p < 1) requestAnimationFrame(frame);
+      else if (cb) cb();
+    }
+    requestAnimationFrame(frame);
+  }
+  function spawnSnow() {
+    var box = document.createElement("div");
+    box.id = "snow";
+    for (var i = 0; i < 36; i++) {
+      var fl = document.createElement("div");
+      fl.className = "flake";
+      fl.textContent = i % 5 === 0 ? "❅" : "❄";
+      fl.style.left = (Math.random() * 100) + "%";
+      fl.style.fontSize = (8 + Math.random() * 12) + "px";
+      fl.style.animationDuration = (5 + Math.random() * 8) + "s";
+      fl.style.animationDelay = (-Math.random() * 12) + "s";
+      fl.style.setProperty("--sway", (Math.random() * 90 - 45) + "px");
+      box.appendChild(fl);
+    }
+    document.body.appendChild(box);
+  }
+  function startXmas() {
+    if (xmasStarted || typeof L === "undefined") return;
+    xmasStarted = true;
+    spawnSnow();
+
+    var TOR  = { lat: 43.6553, lng: -79.3840 };
+    var ANCH = { lat: 61.2, lng: -149.9 };      // 阿拉斯加上空
+    var HKG0 = { lat: 22.3080, lng: 113.9185 }; // 香港机场
+    var CS0  = { lat: 28.2282, lng: 112.9388 }; // 长沙
+    var LD0  = { lat: 27.7006, lng: 111.9946 }; // 娄底
+    function f(ll) { return [ll.lat, ll.lng]; }
+    // 全程跨 180° 经线:把整条链路展开成连续经度,否则 Leaflet 会画出横穿全球的直线
+    function unwrapTo(prev, lng) {
+      var l = lng;
+      while (l - prev > 180) l -= 360;
+      while (l - prev < -180) l += 360;
+      return l;
+    }
+    // 真实跨太平洋航线:经阿拉斯加上空,横越北太平洋,再高铁到长沙、娄底
+    var rawChain = greatCircle(TOR, ANCH, 16)
+      .concat(greatCircle(ANCH, HKG0, 40).slice(1))
+      .concat(greatCircle(HKG0, CS0, 10).slice(1))
+      .concat(greatCircle(CS0, LD0, 8).slice(1));
+    // 必须参照"上一个已展开"的值:跨 180° 后原始值相邻差值很小,参照原始值会展开失败
+    var chain = [];
+    for (var ci = 0; ci < rawChain.length; ci++) {
+      chain.push(ci === 0
+        ? { lat: rawChain[0].lat, lng: rawChain[0].lng }
+        : { lat: rawChain[ci].lat, lng: unwrapTo(chain[ci - 1].lng, rawChain[ci].lng) });
+    }
+    var flight = chain.slice(0, 55);   // 多伦多 → 阿拉斯加 → 香港(55 点)
+    var leg1   = chain.slice(55, 64);  // 香港 → 长沙
+    var leg2   = chain.slice(64);      // 长沙 → 娄底
+    var HKG = { lat: HKG0.lat, lng: chain[54].lng };
+    var CS  = { lat: CS0.lat, lng: chain[63].lng };
+    var LD  = { lat: LD0.lat, lng: chain[70].lng };
+
+    var map = L.map("xmas-map", { scrollWheelZoom: false });
+    window.__debugMap = map;
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      subdomains: "abcd",
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap &copy; CARTO"
+    }).addTo(map);
+    var bounds = L.latLngBounds(chain.map(f)).pad(0.15);
+    // 固定"太平洋视角":亚洲在左、多伦多在右,航线横越北太平洋
+    function fitPacific() {
+      map.fitBounds(bounds);
+      var c = map.getCenter();
+      map.setView([c.lat, -180], map.getZoom(), { animate: false });
+    }
+    fitPacific();
+    // 页面淡入时容器尺寸可能未定,稍后重新 fit 保证航线完整可见
+    setTimeout(function () { map.invalidateSize(); fitPacific(); }, 250);
+
+    function cityDot(name, ll, dir) {
+      var m = L.marker(f(ll), {
+        icon: L.divIcon({ className: "city-pin", html: "<span></span>", iconSize: [12, 12], iconAnchor: [6, 6] }),
+        interactive: false
+      }).addTo(map);
+      m.bindTooltip(name, { permanent: true, direction: dir, className: "city-tip", offset: [0, -8] });
+    }
+    cityDot("多伦多", TOR, "right");
+    cityDot("香港 · 机场", HKG, "left");
+    cityDot("长沙", CS, "right");
+    cityDot("娄底", LD, "bottom");
+
+    L.polyline(flight.map(f), { color: "#b3382e", weight: 2.5, dashArray: "6 8", opacity: .85 }).addTo(map);
+    L.polyline(leg1.map(f), { color: "#2e7d4f", weight: 2.5, dashArray: "2 8", opacity: .85 }).addTo(map);
+    L.polyline(leg2.map(f), { color: "#2e7d4f", weight: 2.5, dashArray: "2 8", opacity: .85 }).addTo(map);
+
+    function emoji(e) {
+      return L.divIcon({ className: "emoji-marker", html: "<span>" + e + "</span>", iconSize: [28, 28], iconAnchor: [14, 14] });
+    }
+    var plane = L.marker(f(TOR), { icon: emoji("✈️"), interactive: false }).addTo(map);
+    var train1 = L.marker(f(HKG), { icon: emoji("🚄"), interactive: false }).addTo(map);
+    var train2 = L.marker(f(CS), { icon: emoji("🚄"), interactive: false }).addTo(map);
+    var heart = L.marker(f(LD), { icon: emoji("💗"), interactive: false, opacity: 0 }).addTo(map);
+
+    setTimeout(function () {
+      moveLeg(plane, flight, 4200, function () {
+        plane.remove();
+        moveLeg(train1, leg1, 2200, function () {
+          train1.remove();
+          moveLeg(train2, leg2, 1800, function () {
+            train2.remove();
+            heart.setOpacity(1);
+            var el = heart.getElement();
+            if (el) el.querySelector("span").classList.add("beat");
+          });
+        });
+      });
+    }, 1200);
+  }
 
   /* ---------- 爆心 ---------- */
   function burstHearts() {
