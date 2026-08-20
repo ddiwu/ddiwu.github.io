@@ -10,7 +10,7 @@ sitemap: false
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>你的信</title>
+<title>我们的时间线</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
 <style>
   @import url('https://fonts.loli.net/css?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&display=swap');
@@ -66,6 +66,113 @@ sitemap: false
     90%  { opacity: .12; }
     100% { transform: translateY(-110dvh) rotate(20deg); opacity: 0; }
   }
+
+  /* ============ 时间线 ============ */
+  #stage-timeline { justify-content: flex-start; padding-top: max(72px, env(safe-area-inset-top)); }
+  .tl-title {
+    font-family: var(--hand);
+    font-size: clamp(30px, 6.5vw, 42px);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .tl-sub {
+    margin-top: 8px;
+    margin-bottom: 52px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-align: center;
+  }
+  .timeline {
+    position: relative;
+    width: min(460px, 88vw);
+    padding-left: 36px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 11px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--seal), #d9c8b4 65%, rgba(217, 200, 180, 0));
+    opacity: .5;
+  }
+  .tl-node {
+    position: relative;
+    padding-bottom: 46px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .9s ease, transform .9s ease;
+  }
+  .tl-node.show { opacity: 1; transform: none; }
+  .tl-node:last-child { padding-bottom: 8px; }
+  .tl-node::before {
+    content: "";
+    position: absolute;
+    left: -30px; top: 7px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 3px solid #d9c8b4;
+    box-shadow: 0 1px 4px rgba(90, 60, 30, .18);
+  }
+  .tl-node.major::before {
+    left: -31px; top: 6px;
+    width: 14px; height: 14px;
+    border-color: var(--seal);
+    box-shadow: 0 0 0 5px rgba(179, 56, 46, .1), 0 2px 6px rgba(179, 56, 46, .35);
+  }
+  .tl-node.future::before { border-style: dashed; opacity: .7; }
+  .tl-date {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--seal);
+    letter-spacing: .05em;
+  }
+  .tl-node.future .tl-date { color: var(--muted); }
+  .tl-name {
+    margin: 2px 0 6px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .tl-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.95;
+  }
+  .tl-open-btn {
+    margin-top: 14px;
+    padding: 10px 24px;
+    border: 1px solid var(--seal);
+    border-radius: 999px;
+    background: #fffdf7;
+    color: var(--seal);
+    font-family: var(--sans);
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(179, 56, 46, .14);
+    transition: transform .2s ease;
+  }
+  .tl-open-btn:active { transform: scale(.96); }
+  #back-tl {
+    position: fixed;
+    top: max(14px, env(safe-area-inset-top));
+    left: 16px;
+    z-index: 60;
+    padding: 7px 16px;
+    border: 1px solid #e5dbcb;
+    border-radius: 999px;
+    background: rgba(255, 253, 247, .88);
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 13px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .45s ease;
+  }
+  #back-tl.show { opacity: 1; pointer-events: auto; }
 
   /* ============ 信封 ============ */
   #stage-envelope { z-index: 1; cursor: pointer; user-select: none; }
@@ -414,6 +521,36 @@ sitemap: false
 <body>
 
 <div id="bg-hearts"></div>
+<button id="back-tl">← 时间线</button>
+
+<!-- ⓪ 时间线 -->
+<div id="stage-timeline" class="stage">
+  <div class="tl-title">我们的时间线</div>
+  <div class="tl-sub">和桐桐的日子，都记在这里</div>
+  <div class="timeline" id="timeline">
+    <div class="tl-node">
+      <div class="tl-date">四月二日 · 01:09</div>
+      <div class="tl-name">初识</div>
+      <div class="tl-desc">我们初识，故事开始。</div>
+    </div>
+    <div class="tl-node">
+      <div class="tl-date">五月十六日</div>
+      <div class="tl-name">第一封信</div>
+      <div class="tl-desc">我写下了关于你的第一封信。</div>
+    </div>
+    <div class="tl-node major">
+      <div class="tl-date">八月十七日</div>
+      <div class="tl-name">在一起 💗</div>
+      <div class="tl-desc">那天的信里，写着我喜欢你。</div>
+      <button class="tl-open-btn" id="open-letter-btn">拆开那天的信 →</button>
+    </div>
+    <div class="tl-node future">
+      <div class="tl-date">……</div>
+      <div class="tl-name">未完待续</div>
+      <div class="tl-desc">以后的日子，慢慢写。</div>
+    </div>
+  </div>
+</div>
 
 <!-- ① 信封 -->
 <div id="stage-envelope" class="stage">
@@ -492,14 +629,21 @@ sitemap: false
   "use strict";
 
   var stages = {
+    timeline: document.getElementById("stage-timeline"),
     envelope: document.getElementById("stage-envelope"),
     letter: document.getElementById("stage-letter"),
     question: document.getElementById("stage-question"),
     yes: document.getElementById("stage-yes")
   };
 
+  var backTl = document.getElementById("back-tl");
   function show(stage) {
     Object.keys(stages).forEach(function (k) { stages[k].hidden = (k !== stage); });
+    backTl.classList.toggle("show", stage !== "timeline");
+    if (stage === "timeline") {
+      var snowEl = document.getElementById("snow");
+      if (snowEl) snowEl.remove();
+    }
     window.scrollTo(0, 0);
   }
   function fadeSwap(stage) {
@@ -507,6 +651,42 @@ sitemap: false
     if (cur) cur.classList.add("fading");
     setTimeout(function () { show(stage); }, 550);
   }
+
+  /* ---------- ⓪ 时间线 ---------- */
+  var tlNodes = document.querySelectorAll(".tl-node");
+  var tlIo = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+        tlIo.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  tlNodes.forEach(function (n) { tlIo.observe(n); });
+
+  // 回到时间线后,把表白流程重置回未拆信状态,方便重温
+  function resetFlow() {
+    opened = false;
+    envelope.classList.remove("open");
+    noBtn.removeAttribute("style");
+    noBtn.textContent = "再想想";
+    yesBtn.removeAttribute("style");
+    hint.style.opacity = "0";
+    hint.textContent = "";
+    dodges = 0;
+    paras.forEach(function (p) { p.classList.remove("show"); io.observe(p); });
+    sign.classList.remove("show");
+    askWrap.classList.remove("show");
+    setupTail();
+  }
+
+  document.getElementById("open-letter-btn").addEventListener("click", function () {
+    fadeSwap("envelope");
+  });
+  backTl.addEventListener("click", function () {
+    resetFlow();
+    fadeSwap("timeline");
+  });
 
   /* ---------- 背景飘心 ---------- */
   var bg = document.getElementById("bg-hearts");
@@ -581,16 +761,21 @@ sitemap: false
 
   var sign = document.getElementById("letter-sign");
   var askWrap = document.getElementById("ask-wrap");
-  var tailIo = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        setTimeout(function () { sign.classList.add("show"); }, 600);
-        setTimeout(function () { askWrap.classList.add("show"); }, 1200);
-        tailIo.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-  tailIo.observe(document.querySelector(".letter p.final"));
+  var tailIo = null;
+  function setupTail() {
+    if (tailIo) tailIo.disconnect();
+    tailIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          setTimeout(function () { sign.classList.add("show"); }, 600);
+          setTimeout(function () { askWrap.classList.add("show"); }, 1200);
+          tailIo.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    tailIo.observe(document.querySelector(".letter p.final"));
+  }
+  setupTail();
 
   document.getElementById("ask-btn").addEventListener("click", function () {
     fadeSwap("question");
@@ -656,11 +841,15 @@ sitemap: false
   yesBtn.addEventListener("click", function () {
     burstHearts();
     fadeSwap("yes");
-    setTimeout(startXmas, 900);
+    setTimeout(function () {
+      startXmas();
+      if (xmasMap) xmasMap.invalidateSize();
+    }, 900);
   });
 
   /* ---------- ④ 圣诞 · 真实地图 ---------- */
   var xmasStarted = false;
+  var xmasMap = null;
   function easeInOut(p) {
     return p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
   }
@@ -757,6 +946,7 @@ sitemap: false
     var LD  = { lat: LD0.lat, lng: chain[70].lng };
 
     var map = L.map("xmas-map", { scrollWheelZoom: false });
+    xmasMap = map;
     L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
       subdomains: "abcd",
       maxZoom: 19,
