@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html lang="zh-CN"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <title>你的信</title> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"> <style>
+<!DOCTYPE html> <html lang="zh-CN"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <title>我们的时间线</title> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"> <style>
   @import url('https://fonts.loli.net/css?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&display=swap');
   :root {
     --paper: #faf6ee;
@@ -52,6 +52,113 @@
     90%  { opacity: .12; }
     100% { transform: translateY(-110dvh) rotate(20deg); opacity: 0; }
   }
+
+  /* ============ 时间线 ============ */
+  #stage-timeline { justify-content: flex-start; padding-top: max(72px, env(safe-area-inset-top)); }
+  .tl-title {
+    font-family: var(--hand);
+    font-size: clamp(30px, 6.5vw, 42px);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .tl-sub {
+    margin-top: 8px;
+    margin-bottom: 52px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-align: center;
+  }
+  .timeline {
+    position: relative;
+    width: min(460px, 88vw);
+    padding-left: 36px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 11px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--seal), #d9c8b4 65%, rgba(217, 200, 180, 0));
+    opacity: .5;
+  }
+  .tl-node {
+    position: relative;
+    padding-bottom: 46px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .9s ease, transform .9s ease;
+  }
+  .tl-node.show { opacity: 1; transform: none; }
+  .tl-node:last-child { padding-bottom: 8px; }
+  .tl-node::before {
+    content: "";
+    position: absolute;
+    left: -30px; top: 7px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 3px solid #d9c8b4;
+    box-shadow: 0 1px 4px rgba(90, 60, 30, .18);
+  }
+  .tl-node.major::before {
+    left: -31px; top: 6px;
+    width: 14px; height: 14px;
+    border-color: var(--seal);
+    box-shadow: 0 0 0 5px rgba(179, 56, 46, .1), 0 2px 6px rgba(179, 56, 46, .35);
+  }
+  .tl-node.future::before { border-style: dashed; opacity: .7; }
+  .tl-date {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--seal);
+    letter-spacing: .05em;
+  }
+  .tl-node.future .tl-date { color: var(--muted); }
+  .tl-name {
+    margin: 2px 0 6px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .tl-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.95;
+  }
+  .tl-open-btn {
+    margin-top: 14px;
+    padding: 10px 24px;
+    border: 1px solid var(--seal);
+    border-radius: 999px;
+    background: #fffdf7;
+    color: var(--seal);
+    font-family: var(--sans);
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(179, 56, 46, .14);
+    transition: transform .2s ease;
+  }
+  .tl-open-btn:active { transform: scale(.96); }
+  #back-tl {
+    position: fixed;
+    top: max(14px, env(safe-area-inset-top));
+    left: 16px;
+    z-index: 60;
+    padding: 7px 16px;
+    border: 1px solid #e5dbcb;
+    border-radius: 999px;
+    background: rgba(255, 253, 247, .88);
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 13px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .45s ease;
+  }
+  #back-tl.show { opacity: 1; pointer-events: auto; }
 
   /* ============ 信封 ============ */
   #stage-envelope { z-index: 1; cursor: pointer; user-select: none; }
@@ -395,19 +502,26 @@
     0%   { transform: translate(0, 0) scale(.4) rotate(0deg); opacity: 1; }
     100% { transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--rot)); opacity: 0; }
   }
-</style> </head> <body> <div id="bg-hearts"></div> <div id="stage-envelope" class="stage"> <div class="envelope-wrap"> <div class="envelope" id="envelope"> <div class="env-letter"> <div class="env-line"></div> <div class="env-line"></div> <div class="env-line"></div> </div> <div class="env-flap"></div> <div class="env-seal">桐</div> </div> </div> <div class="env-caption">你的信</div> <div class="env-hint">点一下,拆开看看</div> <div class="env-count" id="env-count" hidden></div> </div> <div id="stage-letter" class="stage" hidden> <div class="letter"> <div class="letter-date">八月十七日（多伦多时间）</div> <p>四月二日一点零九分，我们初识。</p> <p>五月十六日，我写下了关于你的第一封信。刚认识时，小红书和微信上都是空白一片，我对你所知甚少，只觉得你的声音很好听，爱笑，想来应当是一个很容易聊天的人。</p> <p>不知道是从哪一句话开始，我忽然觉得，你好像能够听懂我在说什么；也似乎从你的声音里，听见了一点没有说出口的忧伤。对我而言，那是一种很少有的感受。</p> <p>后来，我们说了很多话，也一起走过了一百三十七天。</p> <p>最初那些模糊的印象，渐渐变成了一个真实而具体的你。我开始知道你为什么快乐，为什么难过；知道你安定从容的时候，也见过你的不安、倔强和脆弱。</p> <p>我曾经觉得，你像纷乱之中一盏不晃的灯。后来才明白，原来灯也会摇晃，也会有不知道该怎样安顿自己的时候。可这并没有让我失望。相反，当想象中的你一点点变成真实的你，我反而更想理解你，也更想走近你。</p> <p>这四个多月并不总是温柔的。</p> <p>我们有过许多深入的交谈，也有过争吵、误解和情绪最尖锐的时刻。有时我们靠得很近，有时又好像隔着很远。我们都说过没能好好表达的话，也都曾经不知道该怎样理解对方。</p> <p>我不想把争吵写成爱情的证明，因为争吵本身并不浪漫。可是，当那些并不漂亮的时刻过去以后，我发现自己仍然愿意留下来，愿意重新听你说话，愿意弄明白你真正介意的是什么，也愿意让你更加了解我。</p> <p>我才慢慢意识到，我喜欢的已经不再是初识时那个由声音、笑意和想象拼凑出来的你，而是现在这个我见过许多面的、真实的你。</p> <p>我依然会在看见有趣的事情时第一个想到你，会在一天快结束时想听见你的声音，也会在生活重新变得慌乱的时候，下意识地想起你。</p> <p>我好像仍是《堂吉诃德》里那个害了相思病的骑士。只是如今，我期待的已经不只是一通电话。我开始期待，在你的生活里拥有一个确定的位置，也希望你能在我的生活里拥有同样的位置。</p> <p>所以，这一次写下这些话，我不只是想再告诉你一次：</p> <p>我喜欢你。</p> <p>我还想很认真地问你：</p> <p>你愿不愿意正式和我在一起？</p> <p>不是继续停留在一个模糊的、无法说清的身份里，而是成为彼此认真确认的恋人。我想拥有一个可以坦然喜欢你、关心你、陪伴你，也愿意为这段关系负责的名分。</p> <p>五月十六日的我，刚刚遇见你而心动。</p> <p>八月十七日的我，在认识了更真实的你以后，仍然喜欢你，并且比那时更确定。</p> <p class="final">如果你也愿意，我想从今天开始，不再只是日日等着你的电话，而是认真地陪你走下去。</p> <div class="letter-sign" id="letter-sign">—— 一个日日等电话的人</div> <div class="ask-wrap" id="ask-wrap"> <button class="ask-btn" id="ask-btn">信读完了,但还有一件事……</button> </div> </div> </div> <div id="stage-question" class="stage" hidden> <div class="q-title">桐桐,愿不愿意<br>做我女朋友?</div> <div class="q-sub">我想带你走遍世界的角落，体验与以前完全不一样的人生</div> <div class="btn-area" id="btn-area"> <button class="yes-btn" id="yes-btn">愿意 ❤</button> <button class="no-btn" id="no-btn">再想想</button> <div class="no-hint" id="no-hint"></div> </div> </div> <div id="stage-yes" class="stage" hidden> <div class="yes-wrap"> <span class="yes-heart">💗</span> <div class="yes-title">你这盏灯，以后换我来守</div> <div class="xmas-map" id="xmas-map"></div> <div class="xmas-cap" id="xmas-cap">多伦多 ✈ 香港 🚄 长沙 🚄 娄底<br>11,000 公里，这个圣诞，我陪在你身边</div> <div class="yes-foot">此信只此一份</div> </div> </div> <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script> <script>
+</style> </head> <body> <div id="bg-hearts"></div> <button id="back-tl">← 时间线</button> <div id="stage-timeline" class="stage"> <div class="tl-title">我们的时间线</div> <div class="tl-sub">和桐桐的日子，都记在这里</div> <div class="timeline" id="timeline"> <div class="tl-node"> <div class="tl-date">四月二日 · 01:09</div> <div class="tl-name">初识</div> <div class="tl-desc">我们初识，故事开始。</div> </div> <div class="tl-node"> <div class="tl-date">五月十六日</div> <div class="tl-name">第一封信</div> <div class="tl-desc">我写下了关于你的第一封信。</div> </div> <div class="tl-node major"> <div class="tl-date">八月十七日</div> <div class="tl-name">在一起 💗</div> <div class="tl-desc">那天的信里，写着我喜欢你。</div> <button class="tl-open-btn" id="open-letter-btn">拆开那天的信 →</button> </div> <div class="tl-node future"> <div class="tl-date">……</div> <div class="tl-name">未完待续</div> <div class="tl-desc">以后的日子，慢慢写。</div> </div> </div> </div> <div id="stage-envelope" class="stage"> <div class="envelope-wrap"> <div class="envelope" id="envelope"> <div class="env-letter"> <div class="env-line"></div> <div class="env-line"></div> <div class="env-line"></div> </div> <div class="env-flap"></div> <div class="env-seal">桐</div> </div> </div> <div class="env-caption">你的信</div> <div class="env-hint">点一下,拆开看看</div> <div class="env-count" id="env-count" hidden></div> </div> <div id="stage-letter" class="stage" hidden> <div class="letter"> <div class="letter-date">八月十七日（多伦多时间）</div> <p>四月二日一点零九分，我们初识。</p> <p>五月十六日，我写下了关于你的第一封信。刚认识时，小红书和微信上都是空白一片，我对你所知甚少，只觉得你的声音很好听，爱笑，想来应当是一个很容易聊天的人。</p> <p>不知道是从哪一句话开始，我忽然觉得，你好像能够听懂我在说什么；也似乎从你的声音里，听见了一点没有说出口的忧伤。对我而言，那是一种很少有的感受。</p> <p>后来，我们说了很多话，也一起走过了一百三十七天。</p> <p>最初那些模糊的印象，渐渐变成了一个真实而具体的你。我开始知道你为什么快乐，为什么难过；知道你安定从容的时候，也见过你的不安、倔强和脆弱。</p> <p>我曾经觉得，你像纷乱之中一盏不晃的灯。后来才明白，原来灯也会摇晃，也会有不知道该怎样安顿自己的时候。可这并没有让我失望。相反，当想象中的你一点点变成真实的你，我反而更想理解你，也更想走近你。</p> <p>这四个多月并不总是温柔的。</p> <p>我们有过许多深入的交谈，也有过争吵、误解和情绪最尖锐的时刻。有时我们靠得很近，有时又好像隔着很远。我们都说过没能好好表达的话，也都曾经不知道该怎样理解对方。</p> <p>我不想把争吵写成爱情的证明，因为争吵本身并不浪漫。可是，当那些并不漂亮的时刻过去以后，我发现自己仍然愿意留下来，愿意重新听你说话，愿意弄明白你真正介意的是什么，也愿意让你更加了解我。</p> <p>我才慢慢意识到，我喜欢的已经不再是初识时那个由声音、笑意和想象拼凑出来的你，而是现在这个我见过许多面的、真实的你。</p> <p>我依然会在看见有趣的事情时第一个想到你，会在一天快结束时想听见你的声音，也会在生活重新变得慌乱的时候，下意识地想起你。</p> <p>我好像仍是《堂吉诃德》里那个害了相思病的骑士。只是如今，我期待的已经不只是一通电话。我开始期待，在你的生活里拥有一个确定的位置，也希望你能在我的生活里拥有同样的位置。</p> <p>所以，这一次写下这些话，我不只是想再告诉你一次：</p> <p>我喜欢你。</p> <p>我还想很认真地问你：</p> <p>你愿不愿意正式和我在一起？</p> <p>不是继续停留在一个模糊的、无法说清的身份里，而是成为彼此认真确认的恋人。我想拥有一个可以坦然喜欢你、关心你、陪伴你，也愿意为这段关系负责的名分。</p> <p>五月十六日的我，刚刚遇见你而心动。</p> <p>八月十七日的我，在认识了更真实的你以后，仍然喜欢你，并且比那时更确定。</p> <p class="final">如果你也愿意，我想从今天开始，不再只是日日等着你的电话，而是认真地陪你走下去。</p> <div class="letter-sign" id="letter-sign">—— 一个日日等电话的人</div> <div class="ask-wrap" id="ask-wrap"> <button class="ask-btn" id="ask-btn">信读完了,但还有一件事……</button> </div> </div> </div> <div id="stage-question" class="stage" hidden> <div class="q-title">桐桐,愿不愿意<br>做我女朋友?</div> <div class="q-sub">我想带你走遍世界的角落，体验与以前完全不一样的人生</div> <div class="btn-area" id="btn-area"> <button class="yes-btn" id="yes-btn">愿意 ❤</button> <button class="no-btn" id="no-btn">再想想</button> <div class="no-hint" id="no-hint"></div> </div> </div> <div id="stage-yes" class="stage" hidden> <div class="yes-wrap"> <span class="yes-heart">💗</span> <div class="yes-title">你这盏灯，以后换我来守</div> <div class="xmas-map" id="xmas-map"></div> <div class="xmas-cap" id="xmas-cap">多伦多 ✈ 香港 🚄 长沙 🚄 娄底<br>11,000 公里，这个圣诞，我陪在你身边</div> <div class="yes-foot">此信只此一份</div> </div> </div> <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script> <script>
 (function () {
   "use strict";
 
   var stages = {
+    timeline: document.getElementById("stage-timeline"),
     envelope: document.getElementById("stage-envelope"),
     letter: document.getElementById("stage-letter"),
     question: document.getElementById("stage-question"),
     yes: document.getElementById("stage-yes")
   };
 
+  var backTl = document.getElementById("back-tl");
   function show(stage) {
     Object.keys(stages).forEach(function (k) { stages[k].hidden = (k !== stage); });
+    backTl.classList.toggle("show", stage !== "timeline");
+    if (stage === "timeline") {
+      var snowEl = document.getElementById("snow");
+      if (snowEl) snowEl.remove();
+    }
     window.scrollTo(0, 0);
   }
   function fadeSwap(stage) {
@@ -415,6 +529,42 @@
     if (cur) cur.classList.add("fading");
     setTimeout(function () { show(stage); }, 550);
   }
+
+  /* ---------- ⓪ 时间线 ---------- */
+  var tlNodes = document.querySelectorAll(".tl-node");
+  var tlIo = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+        tlIo.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  tlNodes.forEach(function (n) { tlIo.observe(n); });
+
+  // 回到时间线后,把表白流程重置回未拆信状态,方便重温
+  function resetFlow() {
+    opened = false;
+    envelope.classList.remove("open");
+    noBtn.removeAttribute("style");
+    noBtn.textContent = "再想想";
+    yesBtn.removeAttribute("style");
+    hint.style.opacity = "0";
+    hint.textContent = "";
+    dodges = 0;
+    paras.forEach(function (p) { p.classList.remove("show"); io.observe(p); });
+    sign.classList.remove("show");
+    askWrap.classList.remove("show");
+    setupTail();
+  }
+
+  document.getElementById("open-letter-btn").addEventListener("click", function () {
+    fadeSwap("envelope");
+  });
+  backTl.addEventListener("click", function () {
+    resetFlow();
+    fadeSwap("timeline");
+  });
 
   /* ---------- 背景飘心 ---------- */
   var bg = document.getElementById("bg-hearts");
@@ -489,16 +639,21 @@
 
   var sign = document.getElementById("letter-sign");
   var askWrap = document.getElementById("ask-wrap");
-  var tailIo = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        setTimeout(function () { sign.classList.add("show"); }, 600);
-        setTimeout(function () { askWrap.classList.add("show"); }, 1200);
-        tailIo.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-  tailIo.observe(document.querySelector(".letter p.final"));
+  var tailIo = null;
+  function setupTail() {
+    if (tailIo) tailIo.disconnect();
+    tailIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          setTimeout(function () { sign.classList.add("show"); }, 600);
+          setTimeout(function () { askWrap.classList.add("show"); }, 1200);
+          tailIo.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    tailIo.observe(document.querySelector(".letter p.final"));
+  }
+  setupTail();
 
   document.getElementById("ask-btn").addEventListener("click", function () {
     fadeSwap("question");
@@ -564,11 +719,15 @@
   yesBtn.addEventListener("click", function () {
     burstHearts();
     fadeSwap("yes");
-    setTimeout(startXmas, 900);
+    setTimeout(function () {
+      startXmas();
+      if (xmasMap) xmasMap.invalidateSize();
+    }, 900);
   });
 
   /* ---------- ④ 圣诞 · 真实地图 ---------- */
   var xmasStarted = false;
+  var xmasMap = null;
   function easeInOut(p) {
     return p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
   }
@@ -665,6 +824,7 @@
     var LD  = { lat: LD0.lat, lng: chain[70].lng };
 
     var map = L.map("xmas-map", { scrollWheelZoom: false });
+    xmasMap = map;
     L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
       subdomains: "abcd",
       maxZoom: 19,
