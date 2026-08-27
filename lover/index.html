@@ -258,7 +258,7 @@
   @keyframes pulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
 
   /* ============ 信纸 ============ */
-  #stage-letter { justify-content: flex-start; }
+  #stage-letter, #stage-letter-m16 { justify-content: flex-start; }
   .letter {
     width: min(600px, 92vw);
     background: #fffdf7;
@@ -311,6 +311,12 @@
     transition: opacity .9s ease, transform .9s ease;
   }
   .letter-sign.show { opacity: 1; transform: none; }
+  .hand-sign {
+    display: inline-block;
+    font-family: var(--hand);
+    font-size: 26px;
+    color: var(--ink);
+  }
   .ask-wrap {
     margin-top: 44px;
     text-align: center;
@@ -519,7 +525,7 @@
     0%   { transform: translate(0, 0) scale(.4) rotate(0deg); opacity: 1; }
     100% { transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--rot)); opacity: 0; }
   }
-</style> </head> <body> <div id="bg-hearts"></div> <button id="back-tl">← 时间线</button> <div id="stage-timeline" class="stage"> <div class="tl-head"> <svg class="tl-heart" viewbox="0 0 100 100" aria-hidden="true"> <path d="M 50 86 C 24 64, 8 46, 9 30 C 10 16, 24 9, 34 13 C 42 16, 47 23, 50 30 C 53 23, 58 16, 66 12 C 77 8, 91 15, 91 30 C 92 46, 76 64, 50 86 Z"></path> </svg> <div class="tl-title">桐桐，</div> </div> <div class="timeline" id="timeline"> <div class="tl-node"> <div class="tl-date">四月二日 · 01:09<span class="tl-tz">多伦多时间</span> </div> <div class="tl-name">初识</div> <div class="tl-desc">我们初识，故事开始。</div> </div> <div class="tl-node"> <div class="tl-date">五月十六日<span class="tl-tz">北京时间</span> </div> <div class="tl-name">第一封信</div> <div class="tl-desc">我写下了关于你的第一封信。</div> </div> <div class="tl-node major"> <div class="tl-date">八月十七日<span class="tl-tz">多伦多时间</span> </div> <div class="tl-name">在一起 💗</div> <div class="tl-desc">那天的信里，写着我喜欢你。</div> <button class="tl-open-btn" id="open-letter-btn">拆开那天的信 →</button> </div> <div class="tl-node future"> <div class="tl-date">……</div> <div class="tl-name">未完待续</div> <div class="tl-desc">以后的日子，慢慢写。</div> </div> </div> </div> <div id="stage-envelope" class="stage" hidden> <div class="envelope-wrap"> <div class="envelope" id="envelope"> <div class="env-letter"> <div class="env-line"></div> <div class="env-line"></div> <div class="env-line"></div> </div> <div class="env-flap"></div> <div class="env-seal">桐</div> </div> </div> <div class="env-caption">你的信</div> <div class="env-hint">点一下,拆开看看</div> <div class="env-count" id="env-count" hidden></div> </div> <div id="stage-letter" class="stage" hidden> <div class="letter"> <div class="letter-date">八月十七日（多伦多时间）</div> <p>四月二日一点零九分，我们初识。</p> <p>五月十六日，我写下了关于你的第一封信。刚认识时，小红书和微信上都是空白一片，我对你所知甚少，只觉得你的声音很好听，爱笑，想来应当是一个很容易聊天的人。</p> <p>不知道是从哪一句话开始，我忽然觉得，你好像能够听懂我在说什么；也似乎从你的声音里，听见了一点没有说出口的忧伤。对我而言，那是一种很少有的感受。</p> <p>后来，我们说了很多话，也一起走过了一百三十七天。</p> <p>最初那些模糊的印象，渐渐变成了一个真实而具体的你。我开始知道你为什么快乐，为什么难过；知道你安定从容的时候，也见过你的不安、倔强和脆弱。</p> <p>我曾经觉得，你像纷乱之中一盏不晃的灯。后来才明白，原来灯也会摇晃，也会有不知道该怎样安顿自己的时候。可这并没有让我失望。相反，当想象中的你一点点变成真实的你，我反而更想理解你，也更想走近你。</p> <p>这四个多月并不总是温柔的。</p> <p>我们有过许多深入的交谈，也有过争吵、误解和情绪最尖锐的时刻。有时我们靠得很近，有时又好像隔着很远。我们都说过没能好好表达的话，也都曾经不知道该怎样理解对方。</p> <p>我不想把争吵写成爱情的证明，因为争吵本身并不浪漫。可是，当那些并不漂亮的时刻过去以后，我发现自己仍然愿意留下来，愿意重新听你说话，愿意弄明白你真正介意的是什么，也愿意让你更加了解我。</p> <p>我才慢慢意识到，我喜欢的已经不再是初识时那个由声音、笑意和想象拼凑出来的你，而是现在这个我见过许多面的、真实的你。</p> <p>我依然会在看见有趣的事情时第一个想到你，会在一天快结束时想听见你的声音，也会在生活重新变得慌乱的时候，下意识地想起你。</p> <p>我好像仍是《堂吉诃德》里那个害了相思病的骑士。只是如今，我期待的已经不只是一通电话。我开始期待，在你的生活里拥有一个确定的位置，也希望你能在我的生活里拥有同样的位置。</p> <p>所以，这一次写下这些话，我不只是想再告诉你一次：</p> <p>我喜欢你。</p> <p>我还想很认真地问你：</p> <p>你愿不愿意正式和我在一起？</p> <p>不是继续停留在一个模糊的、无法说清的身份里，而是成为彼此认真确认的恋人。我想拥有一个可以坦然喜欢你、关心你、陪伴你，也愿意为这段关系负责的名分。</p> <p>五月十六日的我，刚刚遇见你而心动。</p> <p>八月十七日的我，在认识了更真实的你以后，仍然喜欢你，并且比那时更确定。</p> <p class="final">如果你也愿意，我想从今天开始，不再只是日日等着你的电话，而是认真地陪你走下去。</p> <div class="letter-sign" id="letter-sign">—— 一个日日等电话的人</div> <div class="ask-wrap" id="ask-wrap"> <button class="ask-btn" id="ask-btn">信读完了,但还有一件事……</button> </div> </div> </div> <div id="stage-question" class="stage" hidden> <div class="q-title">桐桐,愿不愿意<br>做我女朋友?</div> <div class="q-sub">我想带你走遍世界的角落，体验与以前完全不一样的人生</div> <div class="btn-area" id="btn-area"> <button class="yes-btn" id="yes-btn">愿意 ❤</button> <button class="no-btn" id="no-btn">再想想</button> <div class="no-hint" id="no-hint"></div> </div> </div> <div id="stage-yes" class="stage" hidden> <div class="yes-wrap"> <span class="yes-heart">💗</span> <div class="yes-title">你这盏灯，以后换我来守</div> <div class="xmas-map" id="xmas-map"></div> <div class="xmas-cap" id="xmas-cap">多伦多 ✈ 香港 🚄 长沙 🚄 娄底<br>11,000 公里，这个圣诞，我陪在你身边</div> <div class="yes-foot">此信只此一份</div> </div> </div> <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script> <script>
+</style> </head> <body> <div id="bg-hearts"></div> <button id="back-tl">← 时间线</button> <div id="stage-timeline" class="stage"> <div class="tl-head"> <svg class="tl-heart" viewbox="0 0 100 100" aria-hidden="true"> <path d="M 50 86 C 24 64, 8 46, 9 30 C 10 16, 24 9, 34 13 C 42 16, 47 23, 50 30 C 53 23, 58 16, 66 12 C 77 8, 91 15, 91 30 C 92 46, 76 64, 50 86 Z"></path> </svg> <div class="tl-title">桐桐，</div> </div> <div class="timeline" id="timeline"> <div class="tl-node"> <div class="tl-date">四月二日 · 01:09<span class="tl-tz">多伦多时间</span> </div> <div class="tl-name">初识</div> <div class="tl-desc">我们初识，故事开始。</div> </div> <div class="tl-node"> <div class="tl-date">五月十六日<span class="tl-tz">北京时间</span> </div> <div class="tl-name">第一封信</div> <div class="tl-desc">我写下了关于你的第一封信。</div> <button class="tl-open-btn" id="open-m16-btn">拆开第一封信 →</button> </div> <div class="tl-node major"> <div class="tl-date">八月十七日<span class="tl-tz">多伦多时间</span> </div> <div class="tl-name">在一起 💗</div> <div class="tl-desc">那天的信里，写着我喜欢你。</div> <button class="tl-open-btn" id="open-letter-btn">拆开那天的信 →</button> </div> <div class="tl-node future"> <div class="tl-date">……</div> <div class="tl-name">未完待续</div> <div class="tl-desc">以后的日子，慢慢写。</div> </div> </div> </div> <div id="stage-envelope" class="stage" hidden> <div class="envelope-wrap"> <div class="envelope" id="envelope"> <div class="env-letter"> <div class="env-line"></div> <div class="env-line"></div> <div class="env-line"></div> </div> <div class="env-flap"></div> <div class="env-seal">桐</div> </div> </div> <div class="env-caption">你的信</div> <div class="env-hint">点一下,拆开看看</div> <div class="env-count" id="env-count" hidden></div> </div> <div id="stage-letter" class="stage" hidden> <div class="letter"> <div class="letter-date">八月十七日（多伦多时间）</div> <p>四月二日一点零九分，我们初识。</p> <p>五月十六日，我写下了关于你的第一封信。刚认识时，小红书和微信上都是空白一片，我对你所知甚少，只觉得你的声音很好听，爱笑，想来应当是一个很容易聊天的人。</p> <p>不知道是从哪一句话开始，我忽然觉得，你好像能够听懂我在说什么；也似乎从你的声音里，听见了一点没有说出口的忧伤。对我而言，那是一种很少有的感受。</p> <p>后来，我们说了很多话，也一起走过了一百三十七天。</p> <p>最初那些模糊的印象，渐渐变成了一个真实而具体的你。我开始知道你为什么快乐，为什么难过；知道你安定从容的时候，也见过你的不安、倔强和脆弱。</p> <p>我曾经觉得，你像纷乱之中一盏不晃的灯。后来才明白，原来灯也会摇晃，也会有不知道该怎样安顿自己的时候。可这并没有让我失望。相反，当想象中的你一点点变成真实的你，我反而更想理解你，也更想走近你。</p> <p>这四个多月并不总是温柔的。</p> <p>我们有过许多深入的交谈，也有过争吵、误解和情绪最尖锐的时刻。有时我们靠得很近，有时又好像隔着很远。我们都说过没能好好表达的话，也都曾经不知道该怎样理解对方。</p> <p>我不想把争吵写成爱情的证明，因为争吵本身并不浪漫。可是，当那些并不漂亮的时刻过去以后，我发现自己仍然愿意留下来，愿意重新听你说话，愿意弄明白你真正介意的是什么，也愿意让你更加了解我。</p> <p>我才慢慢意识到，我喜欢的已经不再是初识时那个由声音、笑意和想象拼凑出来的你，而是现在这个我见过许多面的、真实的你。</p> <p>我依然会在看见有趣的事情时第一个想到你，会在一天快结束时想听见你的声音，也会在生活重新变得慌乱的时候，下意识地想起你。</p> <p>我好像仍是《堂吉诃德》里那个害了相思病的骑士。只是如今，我期待的已经不只是一通电话。我开始期待，在你的生活里拥有一个确定的位置，也希望你能在我的生活里拥有同样的位置。</p> <p>所以，这一次写下这些话，我不只是想再告诉你一次：</p> <p>我喜欢你。</p> <p>我还想很认真地问你：</p> <p>你愿不愿意正式和我在一起？</p> <p>不是继续停留在一个模糊的、无法说清的身份里，而是成为彼此认真确认的恋人。我想拥有一个可以坦然喜欢你、关心你、陪伴你，也愿意为这段关系负责的名分。</p> <p>五月十六日的我，刚刚遇见你而心动。</p> <p>八月十七日的我，在认识了更真实的你以后，仍然喜欢你，并且比那时更确定。</p> <p class="final">如果你也愿意，我想从今天开始，不再只是日日等着你的电话，而是认真地陪你走下去。</p> <div class="letter-sign" id="letter-sign">—— 一个日日等电话的人</div> <div class="ask-wrap" id="ask-wrap"> <button class="ask-btn" id="ask-btn">信读完了,但还有一件事……</button> </div> </div> </div> <div id="stage-letter-m16" class="stage" hidden> <div class="letter"> <div class="letter-date">五月十六日（北京时间）</div> <p>展信安！</p> <p>自读了大学，除“因为”“所以”之外，似乎也没有写过甚么其他字了，突然想提笔写些东西，发现有些太过生疏。于是，借用了别人的字体，但我希望它看起来仍然像一封认真写下来的信。</p> <p>见字如面。临别时刻，突然心中有许多话可说，不过面对这一片片的空白，思绪也跟着突然茫然失措。</p> <p>我还记得，自三月结束了第一个项目后，许是中间有太多跌宕起伏，也可能是身心都过于劳累，忽然便不知道自己想要些什么了。那段时间，我特别爱听《粉丝来信》。每每听到其中“你居然能读懂我文字下的忧伤”一句，总会落泪。我也并不敢奢望，真的有人能读懂我，更不敢期待，能寻得我的夏光。</p> <p>可能是生活太过慌乱，无论做什么都安心不下来，我便想找个人倾诉。恰好一直想找个侠缘，于是就在小红书上发了帖子。本来以为又和前面的帖子一样石沉大海，不过特别幸运的是，也因此认识了好些新的游戏好友；但是也不够幸运，大多数终究浅聊辄止。虽然我也不知道，是否是我有什么地方说错了，或是人与人之间本就如此，相逢已是不易。</p> <p>其间也有聊得多些的人，可不知从何时起，话题除去新的情节内容，便再无其他。像是出门热闹了一阵，又回到空荡沉寂的家中。</p> <p>四月三日，我收到了你的来信。</p> <p>似乎，小红书和微信上都是空白一片。我对你所知甚少，只觉得你的声音挺好听的，还爱笑，想来应当是很容易聊天的人。不知道是哪句话，我忽然觉得，你好像能听懂我在说什么；也似乎在你的声音里，听见了一点你心中的忧伤。这对我而言，是很难得的事。</p> <p>后来与你说得多了，最初的那一点印象便渐渐清晰起来。我渐渐发现，你身上有一种我很羡慕的安定。似乎无论遇见什么事，你都能慢慢把自己安顿好。这样的独立与稳定，像是在纷乱之中仍有一盏不晃的灯。</p> <p>至于这份吸引究竟是从什么时候变得不同，我也说不清。或许是某一次电话里，你笑得很轻；或许是某一句话，你说中了我没能说出口的心事；又或许并没有一个确切的时刻，只是在那些寻常的日子里，我一点一点地，开始期待与你有关的消息。</p> <p>起初我还不太愿意承认。总觉得这样的心意来得太快，像是春日里忽然落下的一场雨，难以分辨。可后来我发现，自己会在看到有趣的事时想告诉你，会在一天快结束时想听见你的声音，会在生活重新变得慌乱的时候，下意识地想起你。</p> <p>说来有些好笑，我有点像《堂吉诃德》里害了相思病的骑士，明知道这样的期待太不讲道理，却还是日日沉沉闷闷，等着你的电话。许是有些荒唐，可那确是最真切的心情。</p> <p>于是我大概也无法再骗自己了。我想，我是喜欢你的。</p> <p>写到这里，似乎结束得有些突兀。可我又觉得，若把所有话都写尽了，反倒少了以后慢慢与你说的理由。</p> <p>若真能当面说，那自然是再好不过了。我想，我会一直期待着罢。</p> <p>此致敬礼</p> <div class="letter-sign" id="m16-sign"><span class="hand-sign">澜小喵</span></div> </div> </div> <div id="stage-question" class="stage" hidden> <div class="q-title">桐桐,愿不愿意<br>做我女朋友?</div> <div class="q-sub">我想带你走遍世界的角落，体验与以前完全不一样的人生</div> <div class="btn-area" id="btn-area"> <button class="yes-btn" id="yes-btn">愿意 ❤</button> <button class="no-btn" id="no-btn">再想想</button> <div class="no-hint" id="no-hint"></div> </div> </div> <div id="stage-yes" class="stage" hidden> <div class="yes-wrap"> <span class="yes-heart">💗</span> <div class="yes-title">你这盏灯，以后换我来守</div> <div class="xmas-map" id="xmas-map"></div> <div class="xmas-cap" id="xmas-cap">多伦多 ✈ 香港 🚄 长沙 🚄 娄底<br>11,000 公里，这个圣诞，我陪在你身边</div> <div class="yes-foot">此信只此一份</div> </div> </div> <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script> <script>
 (function () {
   "use strict";
 
@@ -527,6 +533,7 @@
     timeline: document.getElementById("stage-timeline"),
     envelope: document.getElementById("stage-envelope"),
     letter: document.getElementById("stage-letter"),
+    m16: document.getElementById("stage-letter-m16"),
     question: document.getElementById("stage-question"),
     yes: document.getElementById("stage-yes")
   };
@@ -572,6 +579,7 @@
     paras.forEach(function (p) { p.classList.remove("show"); io.observe(p); });
     sign.classList.remove("show");
     askWrap.classList.remove("show");
+    m16Paras.forEach(function (p) { p.classList.remove("show"); m16Io.observe(p); });
     setupTail();
   }
 
@@ -643,7 +651,7 @@
   stages.envelope.addEventListener("click", openEnvelope);
 
   /* ---------- ② 信件逐段浮现 ---------- */
-  var paras = document.querySelectorAll(".letter p");
+  var paras = document.querySelectorAll("#stage-letter .letter p");
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) {
@@ -674,6 +682,22 @@
 
   document.getElementById("ask-btn").addEventListener("click", function () {
     fadeSwap("question");
+  });
+
+  /* ---------- ②b 五月十六日 · 第一封信 ---------- */
+  var m16Paras = document.querySelectorAll("#stage-letter-m16 .letter p, #stage-letter-m16 .letter-sign");
+  var m16Io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+        m16Io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  m16Paras.forEach(function (p) { m16Io.observe(p); });
+
+  document.getElementById("open-m16-btn").addEventListener("click", function () {
+    fadeSwap("m16");
   });
 
   /* ---------- ③ 逃跑按钮 ---------- */
