@@ -173,23 +173,20 @@ sitemap: false
   }
   .tl-open-btn:active { transform: scale(.96); }
   #back-tl {
-    position: fixed;
-    top: max(14px, env(safe-area-inset-top));
-    left: 16px;
-    z-index: 60;
+    display: none;
+    align-self: flex-start;
+    margin-bottom: 10px;
     padding: 7px 16px;
     border: 1px solid #e5dbcb;
     border-radius: 999px;
-    background: rgba(255, 253, 247, .88);
+    background: #fffdf7;
     color: var(--muted);
     font-family: var(--sans);
     font-size: 13px;
     cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .45s ease;
+    box-shadow: 0 2px 8px rgba(90, 60, 30, .08);
   }
-  #back-tl.show { opacity: 1; pointer-events: auto; }
+  #back-tl.show { display: inline-block; }
 
   /* ============ 信封 ============ */
   #stage-envelope { z-index: 1; cursor: pointer; user-select: none; }
@@ -692,7 +689,9 @@ sitemap: false
   var backTl = document.getElementById("back-tl");
   function show(stage) {
     Object.keys(stages).forEach(function (k) { stages[k].hidden = (k !== stage); });
+    // 返回键跟着当前页面走,随内容滚动,不悬浮遮挡正文
     backTl.classList.toggle("show", stage !== "timeline");
+    stages[stage].prepend(backTl);
     if (stage === "timeline") {
       var snowEl = document.getElementById("snow");
       if (snowEl) snowEl.remove();
@@ -737,7 +736,8 @@ sitemap: false
   document.getElementById("open-letter-btn").addEventListener("click", function () {
     fadeSwap("envelope");
   });
-  backTl.addEventListener("click", function () {
+  backTl.addEventListener("click", function (ev) {
+    ev.stopPropagation(); // 信封页整页可点,别让返回键把信也拆了
     resetFlow();
     fadeSwap("timeline");
   });
