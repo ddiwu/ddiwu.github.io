@@ -272,7 +272,7 @@ sitemap: false
   @keyframes pulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
 
   /* ============ 信纸 ============ */
-  #stage-letter { justify-content: flex-start; }
+  #stage-letter, #stage-letter-m16 { justify-content: flex-start; }
   .letter {
     width: min(600px, 92vw);
     background: #fffdf7;
@@ -325,6 +325,12 @@ sitemap: false
     transition: opacity .9s ease, transform .9s ease;
   }
   .letter-sign.show { opacity: 1; transform: none; }
+  .hand-sign {
+    display: inline-block;
+    font-family: var(--hand);
+    font-size: 26px;
+    color: var(--ink);
+  }
   .ask-wrap {
     margin-top: 44px;
     text-align: center;
@@ -558,6 +564,7 @@ sitemap: false
       <div class="tl-date">五月十六日<span class="tl-tz">北京时间</span></div>
       <div class="tl-name">第一封信</div>
       <div class="tl-desc">我写下了关于你的第一封信。</div>
+      <button class="tl-open-btn" id="open-m16-btn">拆开第一封信 →</button>
     </div>
     <div class="tl-node major">
       <div class="tl-date">八月十七日<span class="tl-tz">多伦多时间</span></div>
@@ -622,6 +629,30 @@ sitemap: false
   </div>
 </div>
 
+<!-- ②b 第一封信 · 五月十六日 -->
+<div id="stage-letter-m16" class="stage" hidden>
+  <div class="letter">
+    <div class="letter-date">五月十六日（北京时间）</div>
+    <p>展信安！</p>
+    <p>自读了大学，除“因为”“所以”之外，似乎也没有写过甚么其他字了，突然想提笔写些东西，发现有些太过生疏。于是，借用了别人的字体，但我希望它看起来仍然像一封认真写下来的信。</p>
+    <p>见字如面。临别时刻，突然心中有许多话可说，不过面对这一片片的空白，思绪也跟着突然茫然失措。</p>
+    <p>我还记得，自三月结束了第一个项目后，许是中间有太多跌宕起伏，也可能是身心都过于劳累，忽然便不知道自己想要些什么了。那段时间，我特别爱听《粉丝来信》。每每听到其中“你居然能读懂我文字下的忧伤”一句，总会落泪。我也并不敢奢望，真的有人能读懂我，更不敢期待，能寻得我的夏光。</p>
+    <p>可能是生活太过慌乱，无论做什么都安心不下来，我便想找个人倾诉。恰好一直想找个侠缘，于是就在小红书上发了帖子。本来以为又和前面的帖子一样石沉大海，不过特别幸运的是，也因此认识了好些新的游戏好友；但是也不够幸运，大多数终究浅聊辄止。虽然我也不知道，是否是我有什么地方说错了，或是人与人之间本就如此，相逢已是不易。</p>
+    <p>其间也有聊得多些的人，可不知从何时起，话题除去新的情节内容，便再无其他。像是出门热闹了一阵，又回到空荡沉寂的家中。</p>
+    <p>四月三日，我收到了你的来信。</p>
+    <p>似乎，小红书和微信上都是空白一片。我对你所知甚少，只觉得你的声音挺好听的，还爱笑，想来应当是很容易聊天的人。不知道是哪句话，我忽然觉得，你好像能听懂我在说什么；也似乎在你的声音里，听见了一点你心中的忧伤。这对我而言，是很难得的事。</p>
+    <p>后来与你说得多了，最初的那一点印象便渐渐清晰起来。我渐渐发现，你身上有一种我很羡慕的安定。似乎无论遇见什么事，你都能慢慢把自己安顿好。这样的独立与稳定，像是在纷乱之中仍有一盏不晃的灯。</p>
+    <p>至于这份吸引究竟是从什么时候变得不同，我也说不清。或许是某一次电话里，你笑得很轻；或许是某一句话，你说中了我没能说出口的心事；又或许并没有一个确切的时刻，只是在那些寻常的日子里，我一点一点地，开始期待与你有关的消息。</p>
+    <p>起初我还不太愿意承认。总觉得这样的心意来得太快，像是春日里忽然落下的一场雨，难以分辨。可后来我发现，自己会在看到有趣的事时想告诉你，会在一天快结束时想听见你的声音，会在生活重新变得慌乱的时候，下意识地想起你。</p>
+    <p>说来有些好笑，我有点像《堂吉诃德》里害了相思病的骑士，明知道这样的期待太不讲道理，却还是日日沉沉闷闷，等着你的电话。许是有些荒唐，可那确是最真切的心情。</p>
+    <p>于是我大概也无法再骗自己了。我想，我是喜欢你的。</p>
+    <p>写到这里，似乎结束得有些突兀。可我又觉得，若把所有话都写尽了，反倒少了以后慢慢与你说的理由。</p>
+    <p>若真能当面说，那自然是再好不过了。我想，我会一直期待着罢。</p>
+    <p>此致敬礼</p>
+    <div class="letter-sign" id="m16-sign"><span class="hand-sign">澜小喵</span></div>
+  </div>
+</div>
+
 <!-- ③ 问题 -->
 <div id="stage-question" class="stage" hidden>
   <div class="q-title">桐桐,愿不愿意<br>做我女朋友?</div>
@@ -653,6 +684,7 @@ sitemap: false
     timeline: document.getElementById("stage-timeline"),
     envelope: document.getElementById("stage-envelope"),
     letter: document.getElementById("stage-letter"),
+    m16: document.getElementById("stage-letter-m16"),
     question: document.getElementById("stage-question"),
     yes: document.getElementById("stage-yes")
   };
@@ -698,6 +730,7 @@ sitemap: false
     paras.forEach(function (p) { p.classList.remove("show"); io.observe(p); });
     sign.classList.remove("show");
     askWrap.classList.remove("show");
+    m16Paras.forEach(function (p) { p.classList.remove("show"); m16Io.observe(p); });
     setupTail();
   }
 
@@ -769,7 +802,7 @@ sitemap: false
   stages.envelope.addEventListener("click", openEnvelope);
 
   /* ---------- ② 信件逐段浮现 ---------- */
-  var paras = document.querySelectorAll(".letter p");
+  var paras = document.querySelectorAll("#stage-letter .letter p");
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) {
@@ -800,6 +833,22 @@ sitemap: false
 
   document.getElementById("ask-btn").addEventListener("click", function () {
     fadeSwap("question");
+  });
+
+  /* ---------- ②b 五月十六日 · 第一封信 ---------- */
+  var m16Paras = document.querySelectorAll("#stage-letter-m16 .letter p, #stage-letter-m16 .letter-sign");
+  var m16Io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("show");
+        m16Io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  m16Paras.forEach(function (p) { m16Io.observe(p); });
+
+  document.getElementById("open-m16-btn").addEventListener("click", function () {
+    fadeSwap("m16");
   });
 
   /* ---------- ③ 逃跑按钮 ---------- */
