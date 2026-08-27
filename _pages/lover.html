@@ -69,20 +69,37 @@ sitemap: false
 
   /* ============ 时间线 ============ */
   #stage-timeline { justify-content: flex-start; padding-top: max(72px, env(safe-area-inset-top)); }
+  .tl-head { text-align: center; margin-bottom: 52px; }
+  .tl-heart {
+    width: 128px; height: 128px;
+    display: block;
+    margin: 0 auto 20px;
+    transform: rotate(-3deg);
+  }
+  .tl-heart path {
+    fill: rgba(179, 56, 46, 0);
+    stroke: var(--seal);
+    stroke-width: 3.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 330;
+    stroke-dashoffset: 330;
+    animation: drawHeart 2s ease-out .3s forwards, heartFill 1.2s ease 2.1s forwards;
+  }
+  @keyframes drawHeart { to { stroke-dashoffset: 0; } }
+  @keyframes heartFill { to { fill: rgba(179, 56, 46, .07); } }
   .tl-title {
     font-family: var(--hand);
-    font-size: clamp(30px, 6.5vw, 42px);
+    font-size: clamp(36px, 8.5vw, 52px);
     line-height: 1.6;
     text-align: center;
   }
-  .tl-sub {
-    margin-top: 8px;
-    margin-bottom: 52px;
+  .tl-tz {
+    margin-left: 8px;
     font-family: var(--sans);
-    font-size: 14px;
-    color: var(--muted);
-    letter-spacing: .08em;
-    text-align: center;
+    font-size: 12px;
+    color: #b7a99d;
+    letter-spacing: .05em;
   }
   .timeline {
     position: relative;
@@ -525,21 +542,25 @@ sitemap: false
 
 <!-- ⓪ 时间线 -->
 <div id="stage-timeline" class="stage">
-  <div class="tl-title">我们的时间线</div>
-  <div class="tl-sub">和桐桐的日子，都记在这里</div>
+  <div class="tl-head">
+    <svg class="tl-heart" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M 50 86 C 24 64, 8 46, 9 30 C 10 16, 24 9, 34 13 C 42 16, 47 23, 50 30 C 53 23, 58 16, 66 12 C 77 8, 91 15, 91 30 C 92 46, 76 64, 50 86 Z"></path>
+    </svg>
+    <div class="tl-title">桐桐，</div>
+  </div>
   <div class="timeline" id="timeline">
     <div class="tl-node">
-      <div class="tl-date">四月二日 · 01:09</div>
+      <div class="tl-date">四月二日 · 01:09<span class="tl-tz">多伦多时间</span></div>
       <div class="tl-name">初识</div>
       <div class="tl-desc">我们初识，故事开始。</div>
     </div>
     <div class="tl-node">
-      <div class="tl-date">五月十六日</div>
+      <div class="tl-date">五月十六日<span class="tl-tz">北京时间</span></div>
       <div class="tl-name">第一封信</div>
       <div class="tl-desc">我写下了关于你的第一封信。</div>
     </div>
     <div class="tl-node major">
-      <div class="tl-date">八月十七日</div>
+      <div class="tl-date">八月十七日<span class="tl-tz">多伦多时间</span></div>
       <div class="tl-name">在一起 💗</div>
       <div class="tl-desc">那天的信里，写着我喜欢你。</div>
       <button class="tl-open-btn" id="open-letter-btn">拆开那天的信 →</button>
@@ -553,7 +574,7 @@ sitemap: false
 </div>
 
 <!-- ① 信封 -->
-<div id="stage-envelope" class="stage">
+<div id="stage-envelope" class="stage" hidden>
   <div class="envelope-wrap">
     <div class="envelope" id="envelope">
       <div class="env-letter">
