@@ -537,7 +537,11 @@
 
   var backTl = document.getElementById("back-tl");
   function show(stage) {
-    Object.keys(stages).forEach(function (k) { stages[k].hidden = (k !== stage); });
+    Object.keys(stages).forEach(function (k) {
+      stages[k].hidden = (k !== stage);
+      // .fading 只用于切换瞬间,回到该页时必须清掉,否则整页透明
+      stages[k].classList.remove("fading");
+    });
     // 返回键跟着当前页面走,随内容滚动,不悬浮遮挡正文
     backTl.classList.toggle("show", stage !== "timeline");
     stages[stage].prepend(backTl);
